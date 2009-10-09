@@ -3,7 +3,7 @@
 namespace AdamDotCom.Website.App.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class AmazonController : Controller
     {
         public ActionResult Index()
         {

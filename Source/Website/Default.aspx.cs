@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.UI;
 
-namespace AdamDotCom_website
+namespace AdamDotCom.Website
 {
     public partial class _Default : Page
     {
