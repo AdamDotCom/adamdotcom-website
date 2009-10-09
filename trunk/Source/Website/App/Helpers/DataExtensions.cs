@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using AdamDotCom.Resume.Service.Proxy;
+﻿using System.Web;
 
-
-namespace AdamDotCom_website.App.Helpers
+namespace AdamDotCom.Website.App.Helpers
 {
     public static class DataExtensions
     {
