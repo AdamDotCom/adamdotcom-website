@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Common
+namespace AdamDotCom.Common.Website
 {
     public class ViewEngine : WebFormViewEngine
     {

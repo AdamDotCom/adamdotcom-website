@@ -8,8 +8,8 @@
     <ProjectGuid>{60C7BE75-7EE2-43E4-A986-CEBF9222B728}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <RootNamespace>AdamDotCom.Common.Website</RootNamespace>
+    <AssemblyName>AdamDotCom.Common.Website</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
