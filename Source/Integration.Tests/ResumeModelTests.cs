@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AdamDotCom_website.App.Models;
+﻿using AdamDotCom.Resume.Service.Proxy;
 using NUnit.Framework;
 
 namespace Integration.Tests

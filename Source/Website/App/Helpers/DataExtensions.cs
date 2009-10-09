@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using AdamDotCom_website.App.Models;
+using AdamDotCom.Resume.Service.Proxy;
+
 
 namespace AdamDotCom_website.App.Helpers
 {
@@ -25,24 +26,24 @@ namespace AdamDotCom_website.App.Helpers
             daysUntilStale = 2;
         }
 
-        public static string LocalFile(this Resume resume)
-        {
-                return string.Format("{0}\\{1}", dataDirectory, resume.ResumeFile);
-        }
-
-        public static bool IsLocal(this Resume resume)
-        {
-            return File.GetLastWriteTime(resume.ResumeFile) != DateTime.MinValue;
-        }
-
-        public static bool IsStale(this Resume resume)
-        {
-            return IsStale(resume.ResumeFile);
-        }
-
-        private static bool IsStale(string pathAndFile)
-        {
-            return File.GetLastWriteTime(pathAndFile) < DateTime.Now.AddDays(-1 * daysUntilStale);
-        }
+//        public static string LocalFile(this Resume resume)
+//        {
+//                return string.Format("{0}\\{1}", dataDirectory, resume.ResumeFile);
+//        }
+//
+//        public static bool IsLocal(this Resume resume)
+//        {
+//            return File.GetLastWriteTime(resume.ResumeFile) != DateTime.MinValue;
+//        }
+//
+//        public static bool IsStale(this Resume resume)
+//        {
+//            return IsStale(resume.ResumeFile);
+//        }
+//
+//        private static bool IsStale(string pathAndFile)
+//        {
+//            return File.GetLastWriteTime(pathAndFile) < DateTime.Now.AddDays(-1 * daysUntilStale);
+//        }
     }
 }

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdamDotCom.Resume.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\AdamDotCom.Resume.Service.Proxy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -58,7 +62,6 @@
     <Compile Include="App\Controllers\AccountController.cs" />
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Helpers\DataExtensions.cs" />
-    <Compile Include="App\Models\Resume.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -92,6 +95,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Models\" />
     <Folder Include="Data\" />
     <Folder Include="Public\Images\" />
   </ItemGroup>
