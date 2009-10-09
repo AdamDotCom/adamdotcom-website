@@ -1,7 +1,6 @@
-﻿using AdamDotCom.Resume.Service.Proxy;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace Integration.Tests
+namespace AdamDotCom.Integration.Tests
 {
     [TestFixture]
     public class ResumeModelTests
@@ -9,7 +8,7 @@ namespace Integration.Tests
         [Test]
         public void ShouldGetExternalResume()
         {
-            var resume = new Resume();
+            var resume = new Resume.Service.Proxy.Resume();
 
             Assert.IsNotNull(resume);
         }

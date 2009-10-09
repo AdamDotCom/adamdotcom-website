@@ -8,8 +8,8 @@
     <ProjectGuid>{598F7CE1-DD0F-43F4-B7FD-B7756146088A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Integration.Tests</RootNamespace>
-    <AssemblyName>Integration.Tests</AssemblyName>
+    <RootNamespace>AdamDotCom.Integration.Tests</RootNamespace>
+    <AssemblyName>AdamDotCom.Integration.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
