@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Integration.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MTS Allstream Inc.")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Integration.Tests")]
-[assembly: AssemblyCopyright("Copyright © MTS Allstream Inc. 2009")]
+[assembly: AssemblyCopyright("Copyright © Adam Kahtava")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

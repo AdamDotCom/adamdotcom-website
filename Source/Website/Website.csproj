@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdamDotCom.Amazon, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\AdamDotCom.Amazon.dll</HintPath>
+    </Reference>
+    <Reference Include="AdamDotCom.Amazon.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\AdamDotCom.Amazon.Service.Proxy.dll</HintPath>
+    </Reference>
     <Reference Include="AdamDotCom.Resume.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\AdamDotCom.Resume.Service.Proxy.dll</HintPath>
@@ -62,12 +70,15 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\Controllers\AccountController.cs" />
     <Compile Include="App\Controllers\AmazonController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
-    <Compile Include="App\Helpers\DataExtensions.cs" />
+    <Compile Include="App\Extensions\AmazonExtensions.cs" />
+    <Compile Include="App\Extensions\ResumeExtensions.cs" />
+    <Compile Include="App\Extensions\LocalDataExtensions.cs" />
+    <Compile Include="App\Models\ToReadList.cs" />
+    <Compile Include="App\Models\HaveReadList.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -78,19 +89,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Views\Amazon\ToRead.aspx" />
+    <Content Include="App\Views\Amazon\HaveRead.aspx" />
+    <Content Include="App\Views\Amazon\Reviews.aspx" />
+    <Content Include="App\Views\Resume\Index.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Public\Stylesheets\Site.css" />
     <Content Include="Public\JavaScripts\jquery-1.3.2.js" />
-    <Content Include="App\Views\Account\ChangePassword.aspx" />
-    <Content Include="App\Views\Account\ChangePasswordSuccess.aspx" />
-    <Content Include="App\Views\Account\LogOn.aspx" />
-    <Content Include="App\Views\Account\Register.aspx" />
     <Content Include="App\Views\Home\About.aspx" />
     <Content Include="App\Views\Home\Index.aspx" />
     <Content Include="App\Views\Shared\Error.aspx" />
-    <Content Include="App\Views\Shared\LogOnUserControl.ascx" />
     <Content Include="App\Views\Shared\Site.Master" />
     <Content Include="App\Views\Web.config" />
   </ItemGroup>
@@ -101,7 +111,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Models\" />
     <Folder Include="Data\" />
     <Folder Include="Public\Images\" />
   </ItemGroup>

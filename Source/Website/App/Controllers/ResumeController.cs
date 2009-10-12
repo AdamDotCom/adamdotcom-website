@@ -1,8 +1,6 @@
-﻿using System;
-using System.Runtime.Remoting.Messaging;
-using System.Web.Mvc;
-using AdamDotCom.Resume.Service.Proxy;
-using AdamDotCom.Website.App.Helpers;
+﻿using System.Web.Mvc;
+using AdamDotCom.Website.App.Extensions;
+using AdamDotCom.Common.Website;
 
 namespace AdamDotCom.Website.App.Controllers
 {
@@ -11,36 +9,34 @@ namespace AdamDotCom.Website.App.Controllers
     [HandleError]
     public class ResumeController : Controller
     {
-        public ActionResult Index(string firstnameAndLastname)
+        internal delegate Resume FireAndForget(string firstAndLastname);
+
+        public ActionResult Index(string firstAndLastname)
         {
+            firstAndLastname = "Adam-Kahtava";
+
             var resume = new Resume().FromLocal();
 
             if (resume == null)
             {
-                resume = new Resume().FromService(firstnameAndLastname);
+                resume = UpdateResumeFromService(firstAndLastname);
             }
             else if(resume.IsStale())
             {
-                var callback = new AsyncCallback(AsyncServiveCall);
+                FireAndForget fireAndForget = UpdateResumeFromService;
+                fireAndForget.BeginInvoke(firstAndLastname, null, null);
             }
 
-            ViewData["Resume"] = resume;
+            ViewData.Add(resume);
 
             return View();
         }
 
-        private static void AsyncServiveCall(IAsyncResult asyncResult)
+        internal static Resume UpdateResumeFromService(string firstAndLastname)
         {
-            var resume = new Resume().FromService("");
-            if (resume != null)
-            {
-                resume.SaveLocal();
-            }
-        }
-
-        public ActionResult About()
-        {
-            return View();
+            var resume = new Resume().FromService(firstAndLastname);
+            resume.SaveLocal();
+            return resume;
         }
     }
 }
