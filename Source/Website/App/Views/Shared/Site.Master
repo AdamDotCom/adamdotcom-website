@@ -4,37 +4,81 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-    <link href="/public/stylesheets/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://adam.kahtava.com/journal/wp-content/themes/inove/style.css" /><!--WP More Feeds 0.17 (http://www.mashget.com) Begin -->
 </head>
 
 <body>
-    <div class="page">
+<!-- wrap START -->
+<div id="wrap">
 
-        <div id="header">
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-              
-            <div id="logindisplay">
-                
-            </div> 
-            
-            <div id="menucontainer">
-            
-                <ul id="menu">              
-                    <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%= Html.ActionLink("About", "About", "Home")%></li>
-                </ul>
-            
-            </div>
-        </div>
+<!-- container START -->
+<div id="container">
 
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+<!-- header START -->
+<div id="header">
 
-            <div id="footer">
-            </div>
-        </div>
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="http://adam.kahtava.com/journal/">Adam.Kahtava.com / AdamDotCom</a></h1>
+		<div id="tagline">A software development blog</div>
+	</div>
+
+	<!-- navigation START -->
+	<div id="navigation">
+		<ul id="menus">
+			<li class="current_page_item"><a class="home" title="Home" href="http://adam.kahtava.com/journal/">Home</a></li>
+						<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+		</ul>
+
+		<!-- searchbox START -->
+
+		<div id="searchbox">
+							<form action="http://adam.kahtava.com/journal/" method="get">
+					<div class="content">
+						<input type="text" class="textfield" name="s" size="24" value="" />
+						<input type="submit" class="button" value="" />
+					</div>
+				</form>
+					</div>
+		<!-- searchbox END -->
+
+		<div class="fixed"></div>
+	</div>
+	<!-- navigation END -->
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+
+	<div id="main">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer" style="clear: both;">
+	<a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
+	<a id="powered" href="http://wordpress.org/">WordPress</a>
+	<div id="copyright">
+		Copyright &copy; 2006-2009 Adam.Kahtava.com / AdamDotCom	</div>
+
+	<div id="themeinfo">
+		Theme by <a href="http://www.neoease.com/">mg12</a>. Valid <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> and <a href="http://jigsaw.w3.org/css-validator/">CSS 3</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+
+</div>
+<!-- wrap END -->
 </body>
 </html>
