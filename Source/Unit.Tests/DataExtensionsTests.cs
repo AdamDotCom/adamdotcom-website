@@ -26,9 +26,9 @@ namespace Unit.Tests
                                                                 },
                                  Specialties = "test-specialities"
                              };
-            DataExtensions.Save(resume);
+            DataExtensions.SaveLocal(resume);
 
-            var resumeFromLoad = DataExtensions.Load(resume) as Resume;
+            var resumeFromLoad = DataExtensions.FromLocal(resume) as Resume;
             
             Assert.IsNotNull(resumeFromLoad);
             Assert.AreEqual(resume.Summary, resumeFromLoad.Summary);
@@ -41,7 +41,7 @@ namespace Unit.Tests
         {
             var resume = new Resume();
 
-            DataExtensions.Save(resume);
+            DataExtensions.SaveLocal(resume);
 
             DataExtensions.StalenessInDays = 1;
             Assert.IsFalse(DataExtensions.IsStale(resume));
