@@ -28,29 +28,29 @@ namespace AdamDotCom.Website.App.Extensions
             stalenessInDays = 2;
         }
 
-        public static string LocalPathAndFile(string file)
+        private static string LocalPathAndFile(string file)
         {
             return string.Format("{0}\\{1}", dataDirectory, file);
         }
 
-        public static string LocalPathAndFile(Object obj)
+        private static string LocalPathAndFile(Object obj)
         {
             var fullNameSplit = obj.GetType().FullName.Split('.');
             var name = fullNameSplit[fullNameSplit.Length-1] ?? obj.GetType().FullName;
             return LocalPathAndFile(string.Format("{0}.xml", name));
         }
 
-        public static bool IsStale(Object obj)
+        private static bool IsStale(Object obj)
         {
             return File.GetLastWriteTime(LocalPathAndFile(obj)) < DateTime.Now.AddDays(-1 * stalenessInDays);
         }
 
-        public static bool Save(Object obj)
+        private static bool Save(Object obj)
         {
             return Save(obj, LocalPathAndFile(obj));
         }
 
-        public static bool Save(Object obj, string pathAndFile)
+        private static bool Save(Object obj, string pathAndFile)
         {
             if (obj == null) throw new ArgumentNullException("obj");            
             var serializer = new XmlSerializer(obj.GetType());
@@ -66,12 +66,12 @@ namespace AdamDotCom.Website.App.Extensions
             }
             return true;
         }
-        public static object Load(Object obj)
+        private static object Load(Object obj)
         {
             return Load(obj, LocalPathAndFile(obj));
         }
 
-        public static object Load(Object obj, string pathAndFile)
+        private static object Load(Object obj, string pathAndFile)
         {
             if (obj == null) throw new ArgumentNullException("obj");
             var serializer = new XmlSerializer(obj.GetType());
@@ -86,6 +86,21 @@ namespace AdamDotCom.Website.App.Extensions
                 return null;
             }
             return obj;
+        }
+
+        public static T FromLocal<T>(this T value)
+        {
+            return (T)Load(value);
+        }
+
+        public static bool SaveLocal<T>(this T value)
+        {
+            return Save(value);
+        }
+
+        public static bool IsStale<T>(this T value)
+        {
+            return IsStale((object)value);
         }
     }
 }

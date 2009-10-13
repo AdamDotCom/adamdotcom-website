@@ -5,6 +5,12 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link rel="stylesheet" type="text/css" href="http://adam.kahtava.com/journal/wp-content/themes/inove/style.css" /><!--WP More Feeds 0.17 (http://www.mashget.com) Begin -->
+    <style>
+        #main 
+        {
+        	/*width: 914px;*/
+        }
+    </style>
 </head>
 
 <body>
