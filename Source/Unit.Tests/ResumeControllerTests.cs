@@ -43,7 +43,7 @@ namespace Unit.Tests
 
             mocks.ReplayAll();
 
-            new ResumeController(repository, service).Index("Adam-Kahtava");
+            new ResumeController(repository, service).Index(string.Empty);
 
             mocks.VerifyAll();
         }

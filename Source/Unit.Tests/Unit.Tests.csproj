@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonControllerTests.cs" />
-    <Compile Include="DataExtensionsTests.cs" />
+    <Compile Include="LocalDataExtensionsTests.cs" />
     <Compile Include="RepositoryTests.cs" />
     <Compile Include="ResumeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
