@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\AdamDotCom.Resume.Service.Proxy.dll</HintPath>
     </Reference>
+    <Reference Include="AdamDotCom.Whois.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\AdamDotCom.Whois.Service.Proxy.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\nUnit\bin\nunit.framework.dll</HintPath>
@@ -51,7 +55,13 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -63,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonControllerTests.cs" />
+    <Compile Include="GreetingControllerTests.cs" />
+    <Compile Include="GreetingMockHelper.cs" />
     <Compile Include="LocalDataExtensionsTests.cs" />
     <Compile Include="RepositoryTests.cs" />
     <Compile Include="ResumeControllerTests.cs" />
