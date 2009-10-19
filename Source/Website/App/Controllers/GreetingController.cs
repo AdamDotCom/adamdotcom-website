@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using AdamDotCom.Website.App.Extensions;
 using AdamDotCom.Website.App.Models;
 using AdamDotCom.Whois.Service.Proxy;
@@ -12,6 +13,7 @@ namespace AdamDotCom.Website.App.Controllers
         private readonly IWhois whoisService;
 
         public GreetingController()
+            : this(new WhoisService())
         {
         }
 
@@ -20,15 +22,13 @@ namespace AdamDotCom.Website.App.Controllers
             this.whoisService = whoisService;
         }
 
-        public ActionResult Index()
+        public JsonResult Index()
         {
             var whois = whoisService.WhoisEnhancedXml(null, "Canada,Calgary,Alberta", Request.UrlReferrer.ToString());
 
             var greeting = new Greeting().GenerateGreeting(whois);
             
-            ViewData.Add(greeting);
-
-            return View();
+            return Json(greeting);
         }
     }
 }

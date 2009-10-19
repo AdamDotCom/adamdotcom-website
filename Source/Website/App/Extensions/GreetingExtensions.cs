@@ -137,6 +137,10 @@ namespace AdamDotCom.Website.App.Extensions
 
         private static string Capitalize(this string value)
         {
+            if (value == null)
+            {
+                return null;
+            }
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
         }
     }
