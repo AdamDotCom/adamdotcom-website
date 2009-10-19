@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using AdamDotCom.Common.Website;
 using AdamDotCom.Resume.Service.Proxy;
-using AdamDotCom.Website.App.Extensions;
 using NUnit.Framework;
 
 namespace Unit.Tests
 {
     [TestFixture]
-    public class DataExtensionsTests
+    public class LocalDataExtensionsTests
     {
         [Test]
         public void ShouldVerifySaveAndLoadFromLocal()
@@ -26,9 +26,9 @@ namespace Unit.Tests
                                                                 },
                                  Specialties = "test-specialities"
                              };
-            DataExtensions.SaveLocal(resume);
+            LocalDataExtensions.SaveLocal(resume);
 
-            var resumeFromLoad = DataExtensions.FromLocal(resume) as Resume;
+            var resumeFromLoad = LocalDataExtensions.FindLocal(resume) as Resume;
             
             Assert.IsNotNull(resumeFromLoad);
             Assert.AreEqual(resume.Summary, resumeFromLoad.Summary);
@@ -41,13 +41,13 @@ namespace Unit.Tests
         {
             var resume = new Resume();
 
-            DataExtensions.SaveLocal(resume);
+            LocalDataExtensions.SaveLocal(resume);
 
-            DataExtensions.StalenessInDays = 1;
-            Assert.IsFalse(DataExtensions.IsStale(resume));
+            LocalDataExtensions.StalenessInDays = 1;
+            Assert.IsFalse(resume.IsLocalStale());
 
-            DataExtensions.StalenessInDays = -1;
-            Assert.IsTrue(DataExtensions.IsStale(resume));
+            LocalDataExtensions.StalenessInDays = -1;
+            Assert.IsTrue(resume.IsLocalStale());
         }
     }
 }

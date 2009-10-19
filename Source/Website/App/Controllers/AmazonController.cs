@@ -1,36 +1,45 @@
 ﻿using System.Web.Mvc;
-using AdamDotCom.Website.App.Extensions;
-using AdamDotCom.Common.Website;
 using AdamDotCom.Website.App.Models;
 using AdamDotCom.Amazon.Service.Proxy;
+using AdamDotCom.Common.Website;
 
 namespace AdamDotCom.Website.App.Controllers
 { 
     [HandleError]
     public class AmazonController : Controller
     {
-        internal delegate Reviews FireAndForget(string customerId);
-        internal delegate T FireAndForget<T>(string listId);
+        private readonly IRepository repository;
+        private readonly IAmazon amazonService;
+        private readonly AsynchronousBroker asynchronousBroker;
+
+        public AmazonController():this(new Repository(), new AmazonService())
+        {
+            asynchronousBroker = new AsynchronousBroker();
+        }
+
+        public AmazonController(IRepository repository, IAmazon amazonService)
+        {
+            asynchronousBroker = new AsynchronousBroker();
+            this.repository = repository;
+            this.amazonService = amazonService;
+        }
 
         public ActionResult Index()
         {
             return Reviews(null);
         }
 
-        public ActionResult Reviews(string customerId)
+        public ActionResult Reviews(string id)
         {
-            customerId = "A2JM0EQJELFL69";
-
-            var reviews = new Reviews().FromLocal();
+            var reviews = repository.Find<Reviews>();
 
             if (reviews == null)
             {
-                UpdateReviewsService(customerId);
+                reviews = UpdateReviewsService(id);
             }
-            else if (reviews.IsStale())
+            else if (repository.IsStale<Reviews>())
             {
-                FireAndForget fireAndForget = UpdateReviewsService;
-                fireAndForget.BeginInvoke(customerId, null, null);
+                asynchronousBroker.FireAndForget<Reviews>(UpdateReviewsService, id);
             }
 
             ViewData.Add(reviews);
@@ -38,20 +47,17 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        public ActionResult HaveRead(string listId)
+        public ActionResult HaveRead(string id)
         {
-            listId = "1XZDXVXHE3946";
-
-            var list = new HaveReadList().FromLocal();
+            var list = repository.Find<HaveReadList>();
 
             if (list == null)
             {
-                UpdateHaveReadListService(listId);
+                UpdateHaveReadListService(id);
             }
-            else if (list.IsStale())
+            else if (repository.IsStale<HaveReadList>())
             {
-                FireAndForget<HaveReadList> fireAndForget = UpdateHaveReadListService;
-                fireAndForget.BeginInvoke(listId, null, null);
+                asynchronousBroker.FireAndForget<HaveReadList>(UpdateHaveReadListService, id);
             }
 
             ViewData.Add(list);
@@ -59,20 +65,17 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        public ActionResult ToRead(string listId)
+        public ActionResult ToRead(string id)
         {
-            listId = "3JU6ASKNUS7B8";
-
-            var list = new ToReadList().FromLocal();
+            var list = repository.Find<ToReadList>();
 
             if (list == null)
             {
-                UpdateToReadListService(listId);
+                UpdateToReadListService(id);
             }
-            else if (list.IsStale())
+            else if (repository.IsStale<ToReadList>())
             {
-                FireAndForget<ToReadList> fireAndForget = UpdateToReadListService;
-                fireAndForget.BeginInvoke(listId, null, null);
+                asynchronousBroker.FireAndForget<ToReadList>(UpdateToReadListService, id);
             }
 
             ViewData.Add(list);
@@ -80,24 +83,24 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        internal static ToReadList UpdateToReadListService(string listId)
+        internal ToReadList UpdateToReadListService(string listId)
         {
-            var list = new ToReadList(new Wishlist().FromService(listId));
-            list.SaveLocal();
+            var list = new ToReadList(amazonService.WishlistByListIdXml(listId));
+            repository.Save(list);
             return list;
         }
 
-        internal static HaveReadList UpdateHaveReadListService(string listId)
+        internal HaveReadList UpdateHaveReadListService(string listId)
         {
-            var list = new HaveReadList(new Wishlist().FromService(listId));
-            list.SaveLocal();
+            var list = new HaveReadList(amazonService.WishlistByListIdXml(listId));
+            repository.Save(list);
             return list;
         }
 
-        internal static Reviews UpdateReviewsService(string customerId)
+        internal Reviews UpdateReviewsService(string customerId)
         {
-            var reviews = new Reviews().FromService(customerId);
-            reviews.SaveLocal();
+            var reviews = amazonService.ReviewsByCustomerIdXml(customerId);
+            repository.Save(reviews);
             return reviews;
         }
     }

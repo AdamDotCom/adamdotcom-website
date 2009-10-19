@@ -1,16 +1,9 @@
-﻿using AdamDotCom.Resume.Service.Proxy;
-
-namespace AdamDotCom.Website.App.Extensions
+﻿namespace AdamDotCom.Website.App.Extensions
 {
     using Resume = Resume.Service.Proxy.Resume;
 
     public static class ResumeExtensions
     {
-        public static Resume FromService(this Resume resume, string firstAndLastname)
-        {
-            return new ResumeService().ResumeXml(firstAndLastname).Enrich();
-        }
-
         /// <summary>
         /// Make my resume more search engine friendly.
         /// This is really specific to my resume, not generic at all.

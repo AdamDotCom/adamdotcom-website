@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
-using AdamDotCom.Website.App.Extensions;
+using AdamDotCom.Resume.Service.Proxy;
 using AdamDotCom.Common.Website;
+using AdamDotCom.Website.App.Extensions;
 
 namespace AdamDotCom.Website.App.Controllers
 {
@@ -9,22 +10,30 @@ namespace AdamDotCom.Website.App.Controllers
     [HandleError]
     public class ResumeController : Controller
     {
-        internal delegate Resume FireAndForget(string firstAndLastname);
+        private readonly IRepository repository;
+        private readonly IResume resumeService;
 
-        public ActionResult Index(string firstAndLastname)
+        public ResumeController():this(new Repository(), new ResumeService())
+        {   
+        }
+
+        public ResumeController(IRepository repository, IResume resumeService)
         {
-            firstAndLastname = "Adam-Kahtava";
+            this.repository = repository;
+            this.resumeService = resumeService;
+        }
 
-            var resume = new Resume().FromLocal();
+        public ActionResult Index(string id)
+        {
+            var resume = repository.Find<Resume>();
 
             if (resume == null)
             {
-                resume = UpdateResumeFromService(firstAndLastname);
+                resume = UpdateResumeFromService(id);
             }
-            else if(resume.IsStale())
+            else if(repository.IsStale<Resume>())
             {
-                FireAndForget fireAndForget = UpdateResumeFromService;
-                fireAndForget.BeginInvoke(firstAndLastname, null, null);
+                new AsynchronousBroker().FireAndForget<Resume>(UpdateResumeFromService, id);
             }
 
             ViewData.Add(resume);
@@ -32,10 +41,10 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        internal static Resume UpdateResumeFromService(string firstAndLastname)
+        internal Resume UpdateResumeFromService(string firstAndLastname)
         {
-            var resume = new Resume().FromService(firstAndLastname);
-            resume.SaveLocal();
+            var resume = resumeService.ResumeXml(firstAndLastname).Enrich();
+            repository.Save(resume);
             return resume;
         }
     }
