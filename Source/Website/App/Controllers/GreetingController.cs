@@ -12,8 +12,7 @@ namespace AdamDotCom.Website.App.Controllers
     {
         private readonly IWhois whoisService;
 
-        public GreetingController()
-            : this(new WhoisService())
+        public GreetingController():this(new WhoisService())
         {
         }
 
