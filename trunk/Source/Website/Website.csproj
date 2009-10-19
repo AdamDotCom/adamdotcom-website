@@ -74,9 +74,13 @@
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
-    <Compile Include="App\Extensions\AmazonExtensions.cs" />
-    <Compile Include="App\Extensions\ResumeExtensions.cs" />
-    <Compile Include="App\Extensions\LocalDataExtensions.cs" />
+    <Compile Include="App\Extensions\GreetingExtensions.cs" />
+    <Compile Include="App\Extensions\MyWebPresenceExtensions.cs" />
+    <Compile Include="App\Extensions\ResumeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App\Extensions\WhoisExtensions.cs" />
+    <Compile Include="App\Models\Greeting.cs" />
     <Compile Include="App\Models\ToReadList.cs" />
     <Compile Include="App\Models\HaveReadList.cs" />
     <Compile Include="Default.aspx.cs">

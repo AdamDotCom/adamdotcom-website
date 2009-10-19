@@ -3,11 +3,11 @@ using System.IO;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace AdamDotCom.Website.App.Extensions
+namespace AdamDotCom.Common.Website
 {
-    public static class DataExtensions
+    public static class LocalDataExtensions
     {
-        private static string dataDirectory;
+        private static readonly string dataDirectory;
         private static int stalenessInDays;
 
         public static int StalenessInDays
@@ -15,7 +15,7 @@ namespace AdamDotCom.Website.App.Extensions
             set { stalenessInDays = value; }
         }
 
-        static DataExtensions()
+        static LocalDataExtensions()
         {
             if (HttpContext.Current != null)
             {
@@ -25,6 +25,7 @@ namespace AdamDotCom.Website.App.Extensions
             {
                 dataDirectory = @"C:\Projects\adamdotcom-website\Source\Website\Data";
             }
+
             stalenessInDays = 2;
         }
 
@@ -33,21 +34,17 @@ namespace AdamDotCom.Website.App.Extensions
             return string.Format("{0}\\{1}", dataDirectory, file);
         }
 
-        private static string LocalPathAndFile(Object obj)
+        private static string LocalPathAndFile(Type type)
         {
-            var fullNameSplit = obj.GetType().FullName.Split('.');
-            var name = fullNameSplit[fullNameSplit.Length-1] ?? obj.GetType().FullName;
+            if (type == null) throw new ArgumentNullException("type");
+            var fullNameSplit = type.FullName.Split('.');
+            var name = fullNameSplit[fullNameSplit.Length-1] ?? type.GetType().FullName;
             return LocalPathAndFile(string.Format("{0}.xml", name));
         }
 
-        private static bool IsStale(Object obj)
+        private static bool IsStale(Type type)
         {
-            return File.GetLastWriteTime(LocalPathAndFile(obj)) < DateTime.Now.AddDays(-1 * stalenessInDays);
-        }
-
-        private static bool Save(Object obj)
-        {
-            return Save(obj, LocalPathAndFile(obj));
+            return File.GetLastWriteTime(LocalPathAndFile(type)) < DateTime.Now.AddDays(-1 * stalenessInDays);
         }
 
         private static bool Save(Object obj, string pathAndFile)
@@ -66,15 +63,11 @@ namespace AdamDotCom.Website.App.Extensions
             }
             return true;
         }
-        private static object Load(Object obj)
-        {
-            return Load(obj, LocalPathAndFile(obj));
-        }
 
         private static object Load(Object obj, string pathAndFile)
         {
             if (obj == null) throw new ArgumentNullException("obj");
-            var serializer = new XmlSerializer(obj.GetType());
+            var serializer = new XmlSerializer((Type) obj);
             try
             {
                 var reader = new StreamReader(pathAndFile);
@@ -88,19 +81,19 @@ namespace AdamDotCom.Website.App.Extensions
             return obj;
         }
 
-        public static T FromLocal<T>(this T value)
+        public static T FindLocal<T>(this T value)
         {
-            return (T)Load(value);
+            return (T) Load(typeof(T), LocalPathAndFile(typeof(T)));
         }
 
         public static bool SaveLocal<T>(this T value)
         {
-            return Save(value);
+            return Save(value, LocalPathAndFile(value.GetType()));
         }
 
-        public static bool IsStale<T>(this T value)
+        public static bool IsLocalStale<T>(this T value)
         {
-            return IsStale((object)value);
+            return IsStale(typeof(T));
         }
     }
 }
