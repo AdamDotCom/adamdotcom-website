@@ -21,7 +21,15 @@ namespace AdamDotCom.Website.App.Controllers
         {
             return View();
         }
-        
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        //, RequiresXhr]
+        public ActionResult Index(string name, string email, string message)
+        {
+
+            return View();
+        }
+
         public JsonResult GetEmail()
         {
             var whois = whoisService.WhoisEnhancedXml(null, "Canada,Calgary,Alberta", null);
