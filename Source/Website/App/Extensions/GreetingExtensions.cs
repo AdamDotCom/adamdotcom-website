@@ -8,14 +8,14 @@ namespace AdamDotCom.Website.App.Extensions
 {
     public static class GreetingExtensions
     {
-        public static Greeting GenerateGreeting(this Greeting greeting, WhoisEnhancedRecord whois)
+        public static Greeting Translate(this Greeting greeting, WhoisEnhancedRecord whois)
         {
             var msg = "";
             if(whois.IsFriendly)
             {
                 msg = string.Format(
                     "Cool! Do you work for {0}? Please feel free to contact me via email at {1}, {2}, or visit {3}. I look forward to talking soon!",
-                    whois.Organization.Capitalize(), MyWebPresence.EmailAccount, MyWebPresence.SkypeAccount, MyWebPresence.LinkedInAccount);
+                    whois.FriendlyMatches[0].Capitalize(), MyWebPresence.EmailAccount, MyWebPresence.SkypeAccount, MyWebPresence.LinkedInAccount);
             }
             else if (whois.IsFilterMatch)
             {
@@ -128,14 +128,14 @@ namespace AdamDotCom.Website.App.Extensions
             return greetingEnd[RandomNumber(greetingEnd)];
         }
 
-        private static int RandomNumber(ICollection<string> collection)
+        public static int RandomNumber(ICollection<string> collection)
         {
             var maxlength = collection.Count;
             var rand = new Random();
             return rand.Next(0, maxlength);
         }
 
-        private static string Capitalize(this string value)
+        public static string Capitalize(this string value)
         {
             if (value == null)
             {

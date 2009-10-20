@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AdamDotCom.Website.App.Controllers;
@@ -63,6 +62,19 @@ namespace Unit.Tests
             Assert.IsFalse(string.IsNullOrEmpty(greeting.Message));
 
             Console.Write(greeting.Message);
+        }
+
+        [Test]
+        public void ShouldVerifyWhenThingsGoBad()
+        {
+            var mocks = new MockRepository();
+
+            var service = mocks.StrictMock<IWhois>();
+
+            //
+            //service.Stub(WhoisEnhancedXml).IgnoreArguments().Return(null);
+
+            Assert.Fail();
         }
     }
 }
