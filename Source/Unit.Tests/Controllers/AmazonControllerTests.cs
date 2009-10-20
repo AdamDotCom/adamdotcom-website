@@ -5,7 +5,7 @@ using AdamDotCom.Website.App.Models;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace Unit.Tests
+namespace Unit.Tests.Controllers
 {
     [TestFixture]
     public class AmazonControllerTests

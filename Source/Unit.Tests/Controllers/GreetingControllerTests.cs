@@ -8,7 +8,7 @@ using AdamDotCom.Whois.Service.Proxy;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace Unit.Tests
+namespace Unit.Tests.Controllers
 {
     [TestFixture]
     public class GreetingControllerTests
@@ -19,7 +19,7 @@ namespace Unit.Tests
             var mocks = new MockRepository();
 
             var service = mocks.StrictMock<IWhois>();
-            var context = mocks.FakeHttpContext("http://www.sanity-check-this-could-be-any-url.com");
+            var context = mocks.FakeHttpContext("http://www.sanity-check-fullstop-This-could-be-any-url.com");
 
             Expect.Call(service.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(new WhoisEnhancedRecord());
             
@@ -64,17 +64,14 @@ namespace Unit.Tests
             Console.Write(greeting.Message);
         }
 
-        [Test]
+        [Test, ExpectedException(typeof(NullReferenceException))]
         public void ShouldVerifyWhenThingsGoBad()
         {
-            var mocks = new MockRepository();
+            var service = MockRepository.GenerateStub<IWhois>();
 
-            var service = mocks.StrictMock<IWhois>();
+            service.Stub(s => s.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(null);
 
-            //
-            //service.Stub(WhoisEnhancedXml).IgnoreArguments().Return(null);
-
-            Assert.Fail();
+            new GreetingController(service).Index();
         }
     }
 }

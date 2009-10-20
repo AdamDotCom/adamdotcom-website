@@ -8,6 +8,12 @@ namespace AdamDotCom.Website.App.Extensions
 {
     public static class GreetingExtensions
     {
+        /// <summary>
+        /// Translate the enhanced whois record to a silly or meaningful message
+        /// </summary>
+        /// <param name="greeting"></param>
+        /// <param name="whois"></param>
+        /// <returns></returns>
         public static Greeting Translate(this Greeting greeting, WhoisEnhancedRecord whois)
         {
             var msg = "";
@@ -131,7 +137,7 @@ namespace AdamDotCom.Website.App.Extensions
         public static int RandomNumber(ICollection<string> collection)
         {
             var maxlength = collection.Count;
-            var rand = new Random();
+            var rand = new Random((int)DateTime.Now.Ticks);
             return rand.Next(0, maxlength);
         }
 
