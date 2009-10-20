@@ -4,7 +4,7 @@ using AdamDotCom.Website.App.Controllers;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace Unit.Tests
+namespace Unit.Tests.Controllers
 {
     [TestFixture]
     public class ResumeControllerTests

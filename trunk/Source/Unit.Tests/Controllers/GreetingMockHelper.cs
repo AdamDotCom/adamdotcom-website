@@ -2,7 +2,7 @@
 using System.Web;
 using Rhino.Mocks;
 
-namespace Unit.Tests
+namespace Unit.Tests.Controllers
 {
     public static class GreetingMockHelper
     {

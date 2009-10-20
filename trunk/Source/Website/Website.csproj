@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Controllers\AmazonController.cs" />
+    <Compile Include="App\Controllers\ContactController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
@@ -95,6 +96,7 @@
     <Content Include="App\Views\Amazon\ToRead.aspx" />
     <Content Include="App\Views\Amazon\HaveRead.aspx" />
     <Content Include="App\Views\Amazon\Reviews.aspx" />
+    <Content Include="App\Views\Contact\Index.aspx" />
     <Content Include="App\Views\Resume\Index.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
