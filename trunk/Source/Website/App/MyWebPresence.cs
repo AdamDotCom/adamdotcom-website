@@ -1,4 +1,4 @@
-﻿namespace AdamDotCom.Website.App.Extensions
+﻿namespace AdamDotCom.Website.App
 {
     public static class MyWebPresence
     {
