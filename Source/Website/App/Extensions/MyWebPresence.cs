@@ -1,6 +1,6 @@
 ﻿namespace AdamDotCom.Website.App.Extensions
 {
-    public static class MyWebPresenceExtensions
+    public static class MyWebPresence
     {
         private static string AccountHandle1 { get { return "AdamDotCom"; } }
         private static string AccountHandle2 { get { return "Kahtava"; } }
