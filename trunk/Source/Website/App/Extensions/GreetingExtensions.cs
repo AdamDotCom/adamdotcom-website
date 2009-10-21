@@ -21,7 +21,7 @@ namespace AdamDotCom.Website.App.Extensions
             {
                 msg = string.Format(
                     "Cool! Do you work for {0}? Please feel free to contact me via email at {1}, {2}, or visit {3}. I look forward to talking soon!",
-                    whois.FriendlyMatches[0].Capitalize(), MyWebPresence.EmailAccount, MyWebPresence.SkypeAccount, MyWebPresence.LinkedInAccount);
+                    whois.FriendlyMatches[0].Capitalize(), MyWebPresence.EmailLink, MyWebPresence.SkypeLink, MyWebPresence.LinkedInLink);
             }
             else if (whois.IsFilterMatch)
             {
@@ -29,7 +29,7 @@ namespace AdamDotCom.Website.App.Extensions
                 {
                     msg = string.Format(
                         "Howdy there! Looks like we both live in Alberta. You might be interested in {0} or you could always send me an email ({1})",
-                        MyWebPresence.PublicCalendar, MyWebPresence.EmailAccount);
+                        MyWebPresence.PublicLink, MyWebPresence.EmailLink);
                 }
             }
             else if (whois.IsReferrerMatch)
@@ -38,55 +38,55 @@ namespace AdamDotCom.Website.App.Extensions
                 {
                     msg = string.Format(
                         "{0} Are we Twitter buddies? If not, be sure to add me ({1}) as a contact! Heck, here's my Facebook ({2}) and my FriendFeed ({3}) details too. See you in the Twittersphere. :)",
-                        Prefix(), MyWebPresence.TwitterAccount, MyWebPresence.FacebookAccount, MyWebPresence.FriendfeedAccount);
+                        Prefix(), MyWebPresence.TwitterLink, MyWebPresence.FacebookLink, MyWebPresence.FriendfeedLink);
                 }
                 else if (whois.IsReferrerMatch("github"))
                 {
                     msg = string.Format(
                         "{0} Isn't Git just the bees knees? Since you're visiting from Git you're probably also interested in {1}. {2}",
-                        Prefix(), MyWebPresence.GoogleCodeAccount, Postfix());
+                        Prefix(), MyWebPresence.GoogleCodeLink, Postfix());
                 }
                 else if (whois.IsReferrerMatch("linkedin") || whois.IsReferrerMatch("monster"))
                 {
                     msg = string.Format(
                         "Hello! Thanks for visiting my site. Feel free to contact me via email at {0} or {1}. I look forward to talking with you soon!",
-                        MyWebPresence.EmailAccount, MyWebPresence.SkypeAccount);
+                        MyWebPresence.EmailLink, MyWebPresence.SkypeLink);
                 }
                 else if (whois.IsReferrerMatch("delicious"))
                 {
                     msg = string.Format(
                         "Man, you gotta love the Delicious bookmarking service. Are we contacts yet? If not be sure to add me ({0}). Oh, and if you're using Twitter add me ({1}) there too. {2}",
-                        MyWebPresence.DeliciousAccount, MyWebPresence.TwitterAccount, Postfix());
+                        MyWebPresence.DeliciousLink, MyWebPresence.TwitterLink, Postfix());
                 }
                 else if (whois.IsReferrerMatch("friendfeed"))
                 {
                     msg = string.Format(
                         "{0} You might also be interested in visiting {1}. {2}",
-                        Prefix(), MyWebPresence.LinkedInAccount, Postfix());
+                        Prefix(), MyWebPresence.LinkedInLink, Postfix());
                 }
                 else if (whois.IsReferrerMatch("facebook"))
                 {
                     msg = string.Format(
                         "{0} Not much to see around here, just my geeky ramblings. If you're using Twitter be sure to add me ({1}). {2}",
-                        Prefix(), MyWebPresence.TwitterAccount, Postfix());
+                        Prefix(), MyWebPresence.TwitterLink, Postfix());
                 }
                 else if (whois.IsReferrerMatch("code.google"))
                 {
                     msg = string.Format(
                         "{0} Feel free to contact me ({1}} I'm always looking for feedback on my code. Oh yeah, while you're here take a look at {2}.",
-                        Prefix(), MyWebPresence.EmailAccount, Postfix());
+                        Prefix(), MyWebPresence.EmailLink, Postfix());
                 }
                 else if (whois.IsReferrerMatch("mail.google"))
                 {
                     msg = string.Format(
                         "Thanks for looking me up. Why not {0} or send me ({1}) an email. :)",
-                        MyWebPresence.SkypeAccount, MyWebPresence.EmailAccount);
+                        MyWebPresence.SkypeLink, MyWebPresence.EmailLink);
                 }
                 else if (whois.IsReferrerMatch("stackoverflow") || whois.IsReferrerMatch("odetocode") || whois.IsReferrerMatch("asp.net"))
                 {
                     msg = string.Format(
                         "{0} Be sure take a peek at {1} or {2}. Drop me {3} a line in the Twittersphere. {4}",
-                        Prefix(), MyWebPresence.GoogleCodeAccount, MyWebPresence.GitHubAccount, MyWebPresence.TwitterAccount, Postfix());
+                        Prefix(), MyWebPresence.GoogleCodeLink, MyWebPresence.GitHubLink, MyWebPresence.TwitterLink, Postfix());
                 }
             }
             else
