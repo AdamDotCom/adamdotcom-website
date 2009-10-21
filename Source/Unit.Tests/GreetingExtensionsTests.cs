@@ -25,7 +25,7 @@ namespace Unit.Tests
             Console.WriteLine(msg);
 
             Assert.IsTrue(msg.Contains("Google"));
-            Assert.IsTrue(msg.Contains(MyWebPresence.EmailAccount));
+            Assert.IsTrue(msg.Contains(MyWebPresence.EmailLink));
             Assert.IsTrue(msg.Contains("callto"));
         }
 
@@ -41,7 +41,7 @@ namespace Unit.Tests
 
             Console.WriteLine(msg);
 
-            Assert.IsTrue(msg.Contains(MyWebPresence.TwitterAccount));
+            Assert.IsTrue(msg.Contains(MyWebPresence.TwitterLink));
         }
 
         [Test]
