@@ -23,7 +23,8 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken]
+        
         public JsonResult Index(string name, string email, string subject, string message)
         {
             //nice to have but not crucial
