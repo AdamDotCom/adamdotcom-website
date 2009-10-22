@@ -8,8 +8,6 @@ namespace AdamDotCom.Website
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
             routes.MapRoute("Resume", "Resume", new { controller = "Resume", action = "Index", id = "Adam-Kahtava" });
             routes.MapRoute("Reviews", "Reviews", new { controller = "Amazon", action = "Reviews", id = "A2JM0EQJELFL69" });
             routes.MapRoute("ToRead", "ToRead", new { controller = "Amazon", action = "ToRead", id = "3JU6ASKNUS7B8" });
