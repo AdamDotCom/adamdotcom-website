@@ -47,6 +47,14 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
+        public ActionResult ReadingLists(string haveReadListId, string toReadListId)
+        {
+            HaveRead(haveReadListId);
+            ToRead(toReadListId);
+
+            return View();
+        }
+
         public ActionResult HaveRead(string id)
         {
             var list = repository.Find<HaveReadList>();
