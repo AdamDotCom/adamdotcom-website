@@ -71,6 +71,10 @@
 	<div id="main">
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
+    
+    <div id="sidebar">
+        <asp:ContentPlaceHolder ID="SidebarContent" runat="server" />
+    </div>
 </div>
 <!-- content END -->
 

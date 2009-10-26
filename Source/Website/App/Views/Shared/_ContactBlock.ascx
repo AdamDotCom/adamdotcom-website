@@ -1,8 +1,15 @@
+<div id="sidebar">
 <div id="contact-column">
 	<h2>Contact</h2>
-		<%=Html.ActionLink<ContactController>(c => c.Index(), this.DoSomething(), new { title = "Through this site", id = "contact_me" })%>
-		<!-- Twitter -->
-		<!-- Skype -->
+		<a href="/contact-me/" title="Email me">Email me</a><br />
+        <a href="http://twitter.com/AdamDotCom"><img src="http://www.twitterbuttons.com/images/lbn/twitterbutton-0108.png" title="By: TwitterButtons.com" width="142" height="48" /></a>
+		<!--
+        Skype 'My status' button
+        http://www.skype.com/go/skypebuttons
+        -->
+        <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+        <a href="skype:adam.kahtava.com?call"><img src="http://mystatus.skype.com/balloon/adam%2Ekahtava.com" style="border: none;" width="150" height="60" alt="My status" /></a>
+
 		
 	<h2>Connect</h2>
 		<!-- Facebook -->
@@ -14,4 +21,5 @@
 		<!-- website -->
 		<!-- services -->
 		<!-- scripts -->
+</div>
 </div>
