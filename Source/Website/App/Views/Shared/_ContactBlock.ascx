@@ -1,5 +1,6 @@
 <div id="sidebar">
 <div id="contact-column">
+    <!-- picture here -->
 	<h2>Contact</h2>
 		<a href="/contact-me/" title="Email me">Email me</a><br />
         <a href="http://twitter.com/AdamDotCom"><img src="http://www.twitterbuttons.com/images/lbn/twitterbutton-0108.png" title="By: TwitterButtons.com" width="142" height="48" /></a>
@@ -12,6 +13,7 @@
 
 		
 	<h2>Connect</h2>
+	    <a href=""><img src="http://mysocialbuttons.com/wp-content/uploads/2009/04/findmeonfacebook3.png" /></a>
 		<!-- Facebook -->
 		<!-- LinkedIn -->
 		<!-- Github -->
