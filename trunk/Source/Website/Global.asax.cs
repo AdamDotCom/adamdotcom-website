@@ -19,8 +19,8 @@ namespace AdamDotCom.Website
                                                            });
 
             routes.MapRoute("Resume-SEO", "resume/curriculum-vitae/software-developer", new { controller = "Resume", action = "Index", id = "Adam-Kahtava" });
-            routes.MapRoute("Reviews-SEO", "reviews/technical-books", new { controller = "Amazon", action = "Reviews", id = "A2JM0EQJELFL69" });
-            routes.MapRoute("ReadingLists-SEO", "reading-lists/recommended-reading/reading-wishlist",
+            routes.MapRoute("Reviews-SEO", "book-reviews", new { controller = "Amazon", action = "Reviews", id = "A2JM0EQJELFL69" });
+            routes.MapRoute("ReadingLists-SEO", "reading-lists/recommended-and-wishlist",
                             new
                                 {
                                     controller = "Amazon",
