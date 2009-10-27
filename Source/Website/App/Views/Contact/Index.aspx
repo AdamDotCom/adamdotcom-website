@@ -17,14 +17,14 @@
     }
     #contact input[type=text], #contact input[type=textarea]
     {
-    	border: solid 1px #7B9EBD;
+    	border: solid 1px #7B7542;
         padding: 4px;
     }
     #contact input[type=text], #contact input[type=textarea], #contact #message_wrap
     {
     	margin: 5px;
 	    float: left;
-	    background-color: #D6E3F7;
+	    background-color: #F7F7F7;
         font-family: Arial, Sans-Serif;
         font-size: 13px;
     }
@@ -32,7 +32,8 @@
     {
 	    clear: both;
         display: block;	
-        margin-left: 250px;
+        margin-left: 290px;
+        font-size: 26px;
     }
 </style>
 <script src="http://remiya.com/demos/htmlbox-4.0/htmlbox.min.js"></script>
@@ -50,7 +51,7 @@
                ["paste", "separator_dots", "bold", "italic", "underline", "link", "unlink", "image", "code"]
             ],
             icons: "silk",
-            skin: "blue"
+            skin: "grey"
         });
 
         $('#contact input[type=text]').attr('size', '50');
@@ -70,4 +71,8 @@
         <input title="Submit" type="submit" value="Send" />
     <%  } %>
 </div>
+</asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server">
+    <% Html.RenderPartial("_ContactBlock"); %>
 </asp:Content>
