@@ -78,3 +78,7 @@
     </ul>
 </div>
 </asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server">
+    <% Html.RenderPartial("_ContactBlock"); %>
+</asp:Content>

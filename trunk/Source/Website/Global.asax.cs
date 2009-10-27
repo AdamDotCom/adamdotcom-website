@@ -28,6 +28,7 @@ namespace AdamDotCom.Website
                                     haveReadListId = "3JU6ASKNUS7B8",
                                     toReadListId = "1XZDXVXHE3946"
                                 });
+            routes.MapRoute("ContactMe-SEO", "contact-me", new {controller = "Contact", action = "Index"});
         
             routes.MapRoute(
                 "Default",                                              // Route name

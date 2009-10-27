@@ -75,6 +75,7 @@
     <div id="sidebar">
         <asp:ContentPlaceHolder ID="SidebarContent" runat="server" />
     </div>
+    <div class="fixed"/>
 </div>
 <!-- content END -->
 
