@@ -99,7 +99,7 @@
   <target name="assets" description="gathers the assets for a compiled MVC application" depends="compile">
     <copy todir="..\Final-Deployment\bin" flatten="true">
       <fileset basedir="..\Dependencies">
-        <include name="System*.dll" />
+        <include name="*.dll" />
       </fileset>
     </copy>
     <mkdir dir="..\Final-Deployment\App\Views" />
@@ -120,6 +120,7 @@
     </copy>
     <copy todir="..\Final-Deployment\" flatten="false">
       <fileset basedir="..\Source\Website\">
+      	<include name="Default.aspx" />
         <include name="Global.asax" />
         <include name="Web.config" />
       </fileset>
