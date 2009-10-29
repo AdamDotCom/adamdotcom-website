@@ -3,7 +3,7 @@
 
   <property name="nant.settings.currentframework" value="net-3.5" />	
   
-  <target name="all" depends="compile test"/>
+  <target name="all" depends="compile test assets"/>
 
   <target name="clean" description="removes all generated build products">
     <delete>
@@ -11,11 +11,16 @@
         <include name="..\Final-Deployment\*.*" />
       </fileset>
     </delete>
-    <mkdir dir="..\Final-Deployment\bin\" />
+    <delete dir="..\Final-Deployment\App" failonerror="false" />
+    <delete dir="..\Final-Deployment\JavaScripts" failonerror="false" />
+    <delete dir="..\Final-Deployment\StyleSheets" failonerror="false" />
+    <delete dir="..\Final-Deployment\Images" failonerror="false" />
+    <delete dir="..\Final-Deployment\bin" failonerror="false" />
   </target>
 
   <target name="compile" description="compiles the library DLLs used by the application" depends="clean">
-    <csc target="library" output="..\Final-Deployment\bin\AdamDotCom.Website.Common.dll" debug="false" warninglevel="0" >
+    <mkdir dir="..\Final-Deployment\bin\" />
+    <csc target="library" output="..\Final-Deployment\bin\${project::get-name()}.Common.dll" debug="false" warninglevel="0" >
       <references>
       	<include name="..\Dependencies\*.dll" />
       </references>
@@ -23,7 +28,7 @@
         <include name="..\Source\Common\**\*.cs"/>
       </sources>
     </csc>
-    <csc target="library" output="..\Final-Deployment\bin\AdamDotCom.Website.dll" debug="false" warninglevel="0" >
+    <csc target="library" output="..\Final-Deployment\bin\${project::get-name()}.dll" debug="false" warninglevel="0" >
       <references>
       	<include name="..\Dependencies\*.dll" />
         <include name="..\Final-Deployment\bin\*.dll" />
@@ -41,12 +46,14 @@
       </fileset>
     </delete>
     <copy todir="bin" flatten="true">
-      <fileset basedir="..\Dependencies">
-        <include name="\**\*.dll" />
+      <fileset basedir="..\Dependencies\">
+        <include name="RhinoMocks\**\*.dll" />
+        <include name="nUnit\**\*.dll" />
+        <include name="*.dll" />
       </fileset>
     </copy>
     <copy todir="bin" flatten="true">
-      <fileset basedir="..\Final-Assemblies">
+      <fileset basedir="..\Final-Deployment\bin">
         <include name="*.dll" />
       </fileset>
     </copy>
@@ -55,8 +62,7 @@
   <target name="test.compile" description="compiles the unit tests" depends="compile test.prepare">
     <csc target="library" output="bin\${project::get-name()}.Integration.Tests.dll" debug="false">
       <references>
-        <include name="..\Final-Assemblies\*.Proxy.dll" />
-        <include name="..\Dependencies\*.Amazon.dll" />
+        <include name="..\Dependencies\**\*.Proxy.dll" />
         <include name="..\Dependencies\nunit\bin\*.dll" />
       </references>
       <sources>
@@ -66,8 +72,10 @@
     <copy file="..\Source\Integration.Tests\App.config" tofile="bin\${project::get-name()}.Integration.Tests.dll.config" />	
     <csc target="library" output="bin\${project::get-name()}.Unit.Tests.dll" debug="false">
       <references>
-        <include name="..\Final-Assemblies\*.dll" />
+        <include name="..\Dependencies\*.dll" />
+        <include name="..\Final-Deployment\bin\*.dll" />
         <include name="..\Dependencies\nunit\bin\*.dll" />
+        <include name="..\Dependencies\RhinoMocks\*.dll" />
       </references>
       <sources>
         <include name="..\Source\Unit.Tests\**\*.cs" />
@@ -76,15 +84,45 @@
   </target>
   
   <target name="test" description="runs the unit tests" depends="test.compile">
-    <echo message="Executing unit tests..."/>
+    <echo message="Executing integration tests..."/>
     <exec basedir="..\Dependencies\nunit\bin"
       workingdir="bin"
       program="nunit-console.exe"
       commandline="${project::get-name()}.Integration.Tests.dll /xml=${project::get-name()}.Integration.Tests.Results.xml" />	
+    <echo message="Executing unit tests..."/>
     <exec basedir="..\Dependencies\nunit\bin"
       workingdir="bin"
       program="nunit-console.exe"
       commandline="${project::get-name()}.Unit.Tests.dll /xml=${project::get-name()}.Unit.Tests.Results.xml" />	
   </target>
-
+  
+  <target name="assets" description="gathers the assets for a compiled MVC application" depends="compile">
+    <copy todir="..\Final-Deployment\bin" flatten="true">
+      <fileset basedir="..\Dependencies">
+        <include name="System*.dll" />
+      </fileset>
+    </copy>
+    <mkdir dir="..\Final-Deployment\App\Views" />
+    <copy todir="..\Final-Deployment\App\Views" flatten="false">
+      <fileset basedir="..\Source\Website\App\Views">
+        <include name="**\*.*" />
+      </fileset>
+    </copy>
+    <copy todir="..\Final-Deployment\" flatten="false">
+      <fileset basedir="..\Source\Website\Public">
+        <include name="\**\*" />
+      </fileset>
+    </copy>
+    <copy todir="..\Final-Deployment\" flatten="false">
+      <fileset basedir="..\Source\Website\Public">
+        <include name="\**\*" />
+      </fileset>
+    </copy>
+    <copy todir="..\Final-Deployment\" flatten="false">
+      <fileset basedir="..\Source\Website\">
+        <include name="Global.asax" />
+        <include name="Web.config" />
+      </fileset>
+    </copy>    
+  </target>
 </project>
