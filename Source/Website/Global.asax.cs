@@ -32,7 +32,7 @@ namespace AdamDotCom.Website
 
             routes.Add("Default", new RouteExtensions("{controller}/{action}/{id}",
                                   new RouteValueDictionary(
-                                      new { controller = "Resume", action = "Index", id = "Adam-Kahtava" }) // Parameter defaults
+                                      new { controller = "Home", action = "Index", id = "" })
                                   , new MvcRouteHandler()));
         }
 
