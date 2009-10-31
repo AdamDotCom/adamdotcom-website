@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="App\Controllers\AmazonController.cs" />
     <Compile Include="App\Controllers\ContactController.cs" />
+    <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
