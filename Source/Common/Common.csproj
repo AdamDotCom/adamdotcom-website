@@ -36,7 +36,13 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -50,6 +56,7 @@
     <Compile Include="AsynchronousBroker.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="LocalDataExtensions.cs" />
+    <Compile Include="RouteExtensions.cs" />
     <Compile Include="Mailer.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="ViewDataExtensions.cs" />
