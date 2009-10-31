@@ -29,12 +29,11 @@ namespace AdamDotCom.Website
                                     toReadListId = "1XZDXVXHE3946"
                                 });
             routes.MapRoute("ContactMe-SEO", "contact-me", new {controller = "Contact", action = "Index"});
-        
-            routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Resume", action = "Index", id = "Adam-Kahtava" }  // Parameter defaults
-                );
+
+            routes.Add("Default", new RouteExtensions("{controller}/{action}/{id}",
+                                  new RouteValueDictionary(
+                                      new { controller = "Resume", action = "Index", id = "Adam-Kahtava" }) // Parameter defaults
+                                  , new MvcRouteHandler()));
         }
 
         protected void Application_Start()
