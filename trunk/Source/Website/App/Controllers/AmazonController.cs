@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using AdamDotCom.Website.App.Models;
 using AdamDotCom.Amazon.Service.Proxy;
 using AdamDotCom.Common.Website;
@@ -55,13 +56,13 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        public ActionResult HaveRead(string id)
+        public void HaveRead(string id)
         {
             var list = repository.Find<HaveReadList>();
 
             if (list == null)
             {
-                UpdateHaveReadListService(id);
+                list = UpdateHaveReadListService(id);
             }
             else if (repository.IsStale<HaveReadList>())
             {
@@ -69,17 +70,15 @@ namespace AdamDotCom.Website.App.Controllers
             }
 
             ViewData.Add(list);
-
-            return View();
         }
 
-        public ActionResult ToRead(string id)
+        public void ToRead(string id)
         {
             var list = repository.Find<ToReadList>();
 
             if (list == null)
             {
-                UpdateToReadListService(id);
+                list = UpdateToReadListService(id);
             }
             else if (repository.IsStale<ToReadList>())
             {
@@ -87,22 +86,20 @@ namespace AdamDotCom.Website.App.Controllers
             }
 
             ViewData.Add(list);
-
-            return View();
         }
 
         internal ToReadList UpdateToReadListService(string listId)
         {
-            var list = new ToReadList(amazonService.WishlistByListIdXml(listId));
+            var list = new ToReadList(amazonService.WishlistByListIdXml(listId)).OrderBy(l => l.AuthorsMLA);
             repository.Save(list);
-            return list;
+            return list as ToReadList;
         }
 
         internal HaveReadList UpdateHaveReadListService(string listId)
         {
-            var list = new HaveReadList(amazonService.WishlistByListIdXml(listId));
+            var list = new HaveReadList(amazonService.WishlistByListIdXml(listId)).OrderBy(l => l.AuthorsMLA);
             repository.Save(list);
-            return list;
+            return list as HaveReadList;
         }
 
         internal Reviews UpdateReviewsService(string customerId)

@@ -1,30 +1,22 @@
-﻿using System.Net.Mail;
+﻿using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace AdamDotCom.Common.Website
 {
-    public class MailerMessage
-    {
-        public string ToAddress { get; set; }
-        public string ToName { get; set; }
-        public string FromAddress { get; set; }
-        public string FromName { get; set; }
-        public string Body { get; set; }
-        public string Subject { get; set; }
-    }
-
     public class Mailer
     {
         private readonly string smtpServerName;
 
-        public Mailer()
-        {
-            smtpServerName = "relay-hosting.secureserver.net";
-        }
+        public Mailer() : this("relay-hosting.secureserver.net") {}
 
         public Mailer(string smtpServerName)
         {
             this.smtpServerName = smtpServerName;
+            Errors = new List<string>();
         }
+
+        //ToDo: extend errors into errorcodes based on enums
+        public List<string> Errors;
 
         public bool Send(MailerMessage mailerMessage)
         {
@@ -40,11 +32,26 @@ namespace AdamDotCom.Common.Website
                                           Body = mailerMessage.Body
                                       };
 
-                var client = new SmtpClient(smtpServerName);
+                var client = new SmtpClient(smtpServerName)
+                                 {
+                                     UseDefaultCredentials = true,
+                                     DeliveryMethod = SmtpDeliveryMethod.Network
+                                 };
 
                 client.Send(mailMessage);
 
                 return true;
+            }
+            catch (SmtpException ex)
+            {
+                if(ex.StatusCode == SmtpStatusCode.TransactionFailed)
+                {
+                    if(ex.Message.ToLowerInvariant().Contains("spam"))
+                    {
+                        Errors.Add("content marked as spam");
+                    }
+                }
+                return false;
             }
             catch
             {

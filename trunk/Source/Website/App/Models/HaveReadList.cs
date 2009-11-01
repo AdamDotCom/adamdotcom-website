@@ -5,12 +5,8 @@ namespace AdamDotCom.Website.App.Models
 {
     public class HaveReadList: Wishlist
     {
-        public HaveReadList()
-        {
-        }
+        public HaveReadList() {}
 
-        public HaveReadList(IEnumerable<Product> wishlist) : base(wishlist)
-        {
-        }
+        public HaveReadList(IEnumerable<Product> wishlist) : base(wishlist) {}
     }
 }

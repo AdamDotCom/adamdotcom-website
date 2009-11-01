@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="AdamDotCom.Amazon.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
+
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Home Page
 </asp:Content>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+<asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
         .reviews
         {
         	margin-left: 10px;
@@ -45,7 +46,9 @@
             background: #EFEFF7;
         }
     </style>
+</asp:Content>
 
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Reviews</h2>
     <ul class="review-list">
     <% int zebra = 0;

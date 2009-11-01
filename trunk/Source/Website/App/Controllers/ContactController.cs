@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AdamDotCom.Common.Website;
 using AdamDotCom.Whois.Service.Proxy;
 
@@ -9,9 +10,7 @@ namespace AdamDotCom.Website.App.Controllers
     {
         private readonly IWhois whoisService;
 
-        public ContactController():this(new WhoisService())
-        {
-        }
+        public ContactController() : this(new WhoisService()) {}
 
         public ContactController(IWhois whoisService)
         {
@@ -23,39 +22,51 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken]
-        
+        [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken, ValidateInput(false)]  
         public JsonResult Index(string name, string email, string subject, string message)
         {
-            //nice to have but not crucial
-            try
-            {
-                var whois = whoisService.WhoisXml(null);
-
-                message += string.Format("\n\n----------\n IP Address: {0}\n Organization: {1}\n Country: {2}\n",
-                                         whois.DomainName, whois.RegistryData.Registrant.Name,
-                                         whois.RegistryData.Registrant.Country);
-            }
-            catch
-            {
-            }
-
             var mailerMessage = new MailerMessage
                               {
                                   FromAddress = email,
                                   FromName = name,
                                   Body = message,
                                   Subject = string.Format("Adam.Kahtava.com response :: {0}", subject),
-                                  ToAddress = MyWebPresence.EmailLink,
+                                  ToAddress = MyWebPresence.EmailAccount,
                                   ToName = MyWebPresence.FullName
                               };
 
-            if(new Mailer().Send(mailerMessage))
+            if(!mailerMessage.IsValid())
             {
-                return Json("Thanks! I'll be reading your message soon.");
+                return Json(new[]{"again", "The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try-try-try again."});
             }
 
-            return Json(string.Format("You found a bug! Now that's embarasing. Let's do this manually, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
+            try
+            {
+                var whois = whoisService.WhoisXml(string.Empty);
+
+                mailerMessage.Body += string.Format("\n\n----------\n IP Address: {0}", whois.DomainName);
+                if (whois.RegistryData.Registrant != null)
+                {
+                    mailerMessage.Body += string.Format("\n Organization: {0}\n Country: {1}\n", whois.RegistryData.Registrant.Name, whois.RegistryData.Registrant.Country);
+                }
+            }
+            catch
+            {
+            }
+
+            var mailer = new Mailer();
+
+            if(mailer.Send(mailerMessage))
+            {
+                return Json(new[]{"success", "Thanks! I'll be reading your message soon."});
+            }
+
+            if(mailer.Errors.Count != 0)
+            {
+                return Json(new[]{"again", "Oh no!! The server gremlins marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!"});
+            }
+
+            return Json(new[]{"fail", string.Format("Now that's embarasing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink)});
         }
 
         public JsonResult GetEmail()

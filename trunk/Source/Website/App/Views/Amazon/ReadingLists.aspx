@@ -2,12 +2,13 @@
 <%@ Import Namespace="AdamDotCom.Amazon.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
+
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Home Page
 </asp:Content>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+<asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
         #main 
         {
         	width: 936px;
@@ -48,6 +49,9 @@
             background: #EFEFF7;
         }
     </style>
+</asp:Content>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="have-read">
     <h2>Books I Recommend</h2>
     <ul class="book-list">

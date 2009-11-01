@@ -10,12 +10,7 @@
         google.load("jquery", "1.3.2");
     </script>
     <link rel="stylesheet" type="text/css" href="http://adam.kahtava.com/journal/wp-content/themes/inove/style.css" /><!--WP More Feeds 0.17 (http://www.mashget.com) Begin -->
-    <style>
-        #main 
-        {
-        	/*width: 914px;*/
-        }
-    </style>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
 </head>
 
 <body>
@@ -46,13 +41,15 @@
 		<!-- searchbox START -->
 
 		<div id="searchbox">
-							<form action="http://adam.kahtava.com/journal/" method="get">
+<%--				
+                <form action="http://adam.kahtava.com/journal/" method="get">
 					<div class="content">
 						<input type="text" class="textfield" name="s" size="24" value="" />
 						<input type="submit" class="button" value="" />
 					</div>
 				</form>
-					</div>
+--%>					
+        </div>
 		<!-- searchbox END -->
 
 		<div class="fixed"></div>
