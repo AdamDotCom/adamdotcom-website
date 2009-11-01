@@ -108,9 +108,9 @@
         <include name="**\*.*" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\" flatten="false">
+    <copy todir="..\Final-Deployment\Public" flatten="false">
       <fileset basedir="..\Source\Website\Public">
-        <include name="\**\*" />
+        <include name="**\*" />
       </fileset>
     </copy>
     <copy todir="..\Final-Deployment\" flatten="false">
