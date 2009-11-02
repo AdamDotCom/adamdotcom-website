@@ -30,6 +30,7 @@ namespace AdamDotCom.Website.App.Controllers
             return Reviews(null);
         }
 
+        [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Reviews(string id)
         {
             var reviews = repository.Find<Reviews>();
@@ -48,6 +49,7 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult ReadingLists(string haveReadListId, string toReadListId)
         {
             HaveRead(haveReadListId);

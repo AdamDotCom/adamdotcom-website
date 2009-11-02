@@ -23,6 +23,7 @@ namespace AdamDotCom.Website.App.Controllers
             this.resumeService = resumeService;
         }
 
+        [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Index(string id)
         {
             var resume = repository.Find<Resume>();
