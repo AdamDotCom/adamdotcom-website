@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using AdamDotCom.Website.App.Models;
 using AdamDotCom.Amazon.Service.Proxy;
 using AdamDotCom.Common.Website;
@@ -23,11 +22,6 @@ namespace AdamDotCom.Website.App.Controllers
             asynchronousBroker = new AsynchronousBroker();
             this.repository = repository;
             this.amazonService = amazonService;
-        }
-
-        public ActionResult Index()
-        {
-            return Reviews(null);
         }
 
         [OutputCache(Duration = 172800, VaryByParam = "None")]
