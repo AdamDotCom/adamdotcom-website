@@ -37,12 +37,32 @@ namespace AdamDotCom.Website.App.Controllers
 
             if(!mailerMessage.IsValid())
             {
-                return Json(new[]{"again", "The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try-try-try again."});
+                return Json(new[] { "again", "The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try, try, try again." });
             }
 
+            mailerMessage = AppendWhois(mailerMessage);
+
+            var mailer = new Mailer();
+
+            if(mailer.Send(mailerMessage))
+            {
+                return Json(new[] { "success", "Thanks! Expect a response soon." });
+            }
+
+            if(mailer.Errors.Count != 0)
+            {
+                return Json(new[] { "again", "Oh no!! The server gremlins are at it again, they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!" });
+            }
+
+            return Json(new[] { "fail", string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink) });
+        }
+
+        private MailerMessage AppendWhois(MailerMessage mailerMessage)
+        {
+            //This really isn't important, if it works HURRAY! If not oh well.
             try
             {
-                var whois = whoisService.WhoisXml(string.Empty);
+                var whois = whoisService.WhoisXml(HttpContext.Request.UserHostAddress);
 
                 mailerMessage.Body += string.Format("\n\n----------\n IP Address: {0}", whois.DomainName);
                 if (whois.RegistryData.Registrant != null)
@@ -53,20 +73,7 @@ namespace AdamDotCom.Website.App.Controllers
             catch
             {
             }
-
-            var mailer = new Mailer();
-
-            if(mailer.Send(mailerMessage))
-            {
-                return Json(new[]{"success", "Thanks! I'll be reading your message soon."});
-            }
-
-            if(mailer.Errors.Count != 0)
-            {
-                return Json(new[]{"again", "Oh no!! The server gremlins marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!"});
-            }
-
-            return Json(new[]{"fail", string.Format("Now that's embarasing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink)});
+            return mailerMessage;
         }
 
         public JsonResult GetEmail()

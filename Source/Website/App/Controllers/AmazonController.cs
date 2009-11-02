@@ -90,16 +90,16 @@ namespace AdamDotCom.Website.App.Controllers
 
         internal ToReadList UpdateToReadListService(string listId)
         {
-            var list = new ToReadList(amazonService.WishlistByListIdXml(listId)).OrderBy(l => l.AuthorsMLA);
+            var list = new ToReadList(amazonService.WishlistByListIdXml(listId));
             repository.Save(list);
-            return list as ToReadList;
+            return list;
         }
 
         internal HaveReadList UpdateHaveReadListService(string listId)
         {
-            var list = new HaveReadList(amazonService.WishlistByListIdXml(listId)).OrderBy(l => l.AuthorsMLA);
+            var list = new HaveReadList(amazonService.WishlistByListIdXml(listId));
             repository.Save(list);
-            return list as HaveReadList;
+            return list;
         }
 
         internal Reviews UpdateReviewsService(string customerId)

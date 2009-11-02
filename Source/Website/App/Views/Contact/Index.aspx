@@ -2,7 +2,7 @@
 <%@ Import Namespace="AdamDotCom.Website.App.Controllers"%>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitleContent" runat="server">
-    Adam.Kahtava.com / AdamDotCom - Resume / Curriculum Vitae / Software Developer / Web Developer 
+    Adam.Kahtava.com / AdamDotCom - Contact Me
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -16,12 +16,12 @@
 	        padding: 4px 10px 4px 4px;
 	        margin: 5px;
         }
-        #contact input[type=text], #contact input[type=textarea]
+        #contact input[type=text], #contact textarea
         {
     	    border: solid 1px #7B7542;
             padding: 4px;
         }
-        #contact input[type=text], #contact input[type=textarea], #contact #message_wrap
+        #contact input[type=text], #contact textarea, #contact #message_wrap
         {
     	    margin: 5px;
 	        float: left;
@@ -53,9 +53,7 @@
                 ],
                 icons: "silk",
                 skin: "grey"
-            });
-
-            $('#contact input[type=text]').attr('size', '50');
+            });            
         });
     </script>
 </asp:Content>
@@ -64,10 +62,10 @@
     <div id="contact">
         <% using (Html.BeginForm("index", "contact", FormMethod.Post, new { name = "contact" }))
             { %>
-            <label for="name">Name</label><%= Html.TextBox("name") %>
-            <label for="email"><span>Email</span></label><%= Html.TextBox("email") %>
-            <label for="subject">Subject</label><%= Html.TextBox("subject") %>
-            <label for="message"><span>Message</span></label><%= Html.TextArea("message") %>
+            <label for="name">Name</label><%= Html.TextBox("name", string.Empty, new { size = "50" }) %>
+            <label for="email"><span>Email</span></label><%= Html.TextBox("email", string.Empty, new { size = "50" })%>
+            <label for="subject">Subject</label><%= Html.TextBox("subject", string.Empty, new { size = "50" })%>
+            <label for="message"><span>Message</span></label><%= Html.TextArea("message", string.Empty, new { rows = "12", cols = "65" })%>
             <%= Html.AntiForgeryToken() %>
             <input title="Submit" type="submit" value="Send" />
         <%  } %>

@@ -1,25 +1,26 @@
-<style>
-#northsidebar .widget > div
-{
-	padding: 10px 10px 10px 40px;
-}
-#northsidebar .contact-me span
-{
-	margin-left: -150px;
-	font-size: 26px;
-	position: absolute;
-	visibility: hidden;
-}
+<%@ Import Namespace="AdamDotCom.Website.App.Extensions"%>
+<style type="text/css">
+    #northsidebar .widget > div
+    {
+	    padding: 10px 10px 10px 40px;
+    }
+    #northsidebar .contact-me span
+    {
+	    margin-left: -150px;
+	    font-size: 26px;
+	    position: absolute;
+	    visibility: hidden;
+    }
 </style>
+
 <div id="sidebar">
     <div id="northsidebar">
-        <!-- picture here -->
         <div class="widget">
 	    <h3>Contact</h3>
             <div style="padding-bottom: 0px; padding-left: 33px;">
                 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
                 <a href="skype:adam.kahtava.com?call"><img src="http://mystatus.skype.com/balloon/adam%2Ekahtava.com" style="border: none;" width="150" height="60" alt="My status" /></a>
-		        <img src="public/images/Adam-Kahtava-2009-150px.png" />                
+		        <img src="/public/images/Adam-Kahtava-2009-150px.png" />                
             </div>
 	        <div style="padding-bottom: 0px;">
 		        <a class="contact-me" href="/contact-me/" title="Contact me"><img src="/public/images/contact-me.png" alt="contact-me" /><span>Contact me</span></a><br />
