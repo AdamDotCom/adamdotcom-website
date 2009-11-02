@@ -12,9 +12,7 @@
       </fileset>
     </delete>
     <delete dir="..\Final-Deployment\App" failonerror="false" />
-    <delete dir="..\Final-Deployment\JavaScripts" failonerror="false" />
-    <delete dir="..\Final-Deployment\StyleSheets" failonerror="false" />
-    <delete dir="..\Final-Deployment\Images" failonerror="false" />
+    <delete dir="..\Final-Deployment\Public" failonerror="false" />
     <delete dir="..\Final-Deployment\bin" failonerror="false" />
   </target>
 
@@ -102,7 +100,6 @@
         <include name="*.dll" />
       </fileset>
     </copy>
-    <mkdir dir="..\Final-Deployment\App\Views" />
     <copy todir="..\Final-Deployment\App\Views" flatten="false">
       <fileset basedir="..\Source\Website\App\Views">
         <include name="**\*.*" />
