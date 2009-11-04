@@ -41,19 +41,19 @@
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-<div id="reviews">
-    <h2>Reviews</h2>
-    <ul class="review-list">
-    <% int zebra = 0;
-       foreach (Review item in ViewData.Get<Reviews>())
-       { %>
-        <li class="<%= zebra % 2 == 0 ? "" : "zebra" %>"><a href="<%= item.Url %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><strong><%= item.Title %> by <%= item.AuthorsMLA %></strong></a><p><%= item.Content %></p></li>
-    <%  zebra++;
-       } %>
-    </ul>  
-</div>    
+    <div id="reviews">
+        <h2>Reviews</h2>
+        <ul class="review-list">
+        <% int zebra = 0;
+           foreach (Review item in ViewData.Get<Reviews>())
+           { %>
+            <li class="<%= zebra % 2 == 0 ? "" : "zebra" %>"><a href="<%= item.Url %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><strong><%= item.Title %> by <%= item.AuthorsMLA %></strong></a><p><%= item.Content %></p></li>
+        <%  zebra++;
+           } %>
+        </ul>  
+    </div>    
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server">
-<% Html.RenderPartial("_ContactBlock"); %>
+    <% Html.RenderPartial("_ContactBlock"); %>
 </asp:Content>

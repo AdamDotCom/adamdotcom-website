@@ -97,17 +97,24 @@
         <include name="*.dll" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\App\Views" flatten="false">
+    <copy todir="..\Final-Deployment\App\Views">
       <fileset basedir="..\Source\Website\App\Views">
-        <include name="**\*.*" />
+        <include name="**\*.aspx" />
+        <include name="**\*.ascx" />
+        <include name="**\*.config" />
+        <include name="**\*.master" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\Public" flatten="false">
+    <copy todir="..\Final-Deployment\Public">
       <fileset basedir="..\Source\Website\Public">
-        <include name="**\*" />
+        <include name="**\*.jpg" />
+        <include name="**\*.png" />
+        <include name="**\*.gif" />
+        <include name="**\*.js" />
+        <include name="**\*.css" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\" flatten="false">
+    <copy todir="..\Final-Deployment\">
       <fileset basedir="..\Source\Website\">
       	<include name="Default.aspx" />
         <include name="Global.asax" />

@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<HandleErrorInfo>" %>
 
 <asp:Content ID="errorTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Error
+    Adam.Kahtava.com / AdamDotCom - Oh no!! Abort, abort. Something went horribly wrong.
 </asp:Content>
 
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
