@@ -75,8 +75,8 @@
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
+    <Compile Include="App\Extensions\AnalyticsExtensions.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
-    <Compile Include="App\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="App\MyWebPresence.cs" />
     <Compile Include="App\Extensions\ResumeExtensions.cs">
       <SubType>Code</SubType>

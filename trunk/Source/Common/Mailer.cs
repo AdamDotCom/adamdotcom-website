@@ -22,9 +22,9 @@ namespace AdamDotCom.Common.Website
         {
             try
             {
-                var fromAddress = new MailAddress(mailerMessage.ToAddress, mailerMessage.ToName);
+                var toAddress = new MailAddress(mailerMessage.ToAddress, mailerMessage.ToName);
 
-                var toAddress = new MailAddress(mailerMessage.FromAddress, mailerMessage.FromName);
+                var fromAddress = new MailAddress(mailerMessage.FromAddress, mailerMessage.FromName);
 
                 var mailMessage = new MailMessage(fromAddress, toAddress)
                                       {
