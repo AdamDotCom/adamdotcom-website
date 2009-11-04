@@ -1,17 +1,6 @@
+<%@ Import Namespace="AdamDotCom.Common.Website"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Extensions"%>
-<style type="text/css">
-    #northsidebar .widget > div
-    {
-	    padding: 10px 10px 10px 40px;
-    }
-    #northsidebar .contact-me span
-    {
-	    margin-left: -150px;
-	    font-size: 26px;
-	    position: absolute;
-	    visibility: hidden;
-    }
-</style>
+<%@ OutputCache Duration="172800" VaryByParam="None" Shared="true" %>
 
 <div id="sidebar">
     <div id="northsidebar">

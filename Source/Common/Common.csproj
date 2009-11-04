@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsynchronousBroker.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="LocalDataExtensions.cs" />
     <Compile Include="MailerMessage.cs" />

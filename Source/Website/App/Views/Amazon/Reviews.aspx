@@ -3,33 +3,25 @@
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Home Page
+    Adam.Kahtava.com / AdamDotCom - Book Reviews
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
-        .reviews
-        {
-        	margin-left: 10px;
-        }
-        .reviews h2
-        {
-        	margin-left: -10px;
-        }
-        ul.review-list
+        #reviews ul.review-list
         {
             list-style: none;	
         }
-        ul.review-list img
+        #reviews ul.review-list img
         {
         	float: left;
         	margin-left: -95px;
         }
-        ul.review-list li p
+        #reviews ul.review-list li p
         {
         	padding-top: 7px;
         }
-        ul.review-list li
+        #reviews ul.review-list li
         {
         	display: block;
         	float: left;
@@ -41,7 +33,7 @@
             border: solid 2px #EFEFF7;
             
         }
-        li.zebra 
+        #reviews li.zebra 
         {
             background: #EFEFF7;
         }
@@ -49,6 +41,7 @@
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+<div id="reviews">
     <h2>Reviews</h2>
     <ul class="review-list">
     <% int zebra = 0;
@@ -58,8 +51,9 @@
     <%  zebra++;
        } %>
     </ul>  
+</div>    
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server">
-    <% Html.RenderPartial("_ContactBlock"); %>
+<% Html.RenderPartial("_ContactBlock"); %>
 </asp:Content>
