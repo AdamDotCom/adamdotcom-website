@@ -8,12 +8,9 @@
   <target name="clean" description="removes all generated build products">
     <delete>
       <fileset>
-        <include name="..\Final-Deployment\*.*" />
+        <include name="..\Final-Deployment\**\*.*" />
       </fileset>
     </delete>
-    <delete dir="..\Final-Deployment\App" failonerror="false" />
-    <delete dir="..\Final-Deployment\Public" failonerror="false" />
-    <delete dir="..\Final-Deployment\bin" failonerror="false" />
   </target>
 
   <target name="compile" description="compiles the library DLLs used by the application" depends="clean">
@@ -108,11 +105,6 @@
     <copy todir="..\Final-Deployment\Public" flatten="false">
       <fileset basedir="..\Source\Website\Public">
         <include name="**\*" />
-      </fileset>
-    </copy>
-    <copy todir="..\Final-Deployment\" flatten="false">
-      <fileset basedir="..\Source\Website\Public">
-        <include name="\**\*" />
       </fileset>
     </copy>
     <copy todir="..\Final-Deployment\" flatten="false">
