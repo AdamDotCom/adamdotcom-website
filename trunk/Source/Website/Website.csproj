@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="App\Views\Amazon\ReadingLists.aspx" />
     <Content Include="App\Views\Amazon\Reviews.aspx" />
+    <Content Include="App\Views\Contact\Thanks.aspx" />
     <Content Include="App\Views\Contact\Index.aspx" />
     <Content Include="App\Views\Resume\Index.aspx" />
     <Content Include="App\Views\Shared\_ContactBlock.ascx" />

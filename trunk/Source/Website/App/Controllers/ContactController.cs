@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Web.Mvc;
 using AdamDotCom.Common.Website;
 using AdamDotCom.Whois.Service.Proxy;
@@ -22,8 +23,13 @@ namespace AdamDotCom.Website.App.Controllers
             return View();
         }
 
+        public ActionResult Thanks()
+        {
+            return View();
+        }
+
         [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken, ValidateInput(false)]  
-        public JsonResult Index(string name, string email, string subject, string message)
+        public ActionResult Index(string name, string email, string subject, string message)
         {
             var mailerMessage = new MailerMessage
                               {
@@ -37,7 +43,8 @@ namespace AdamDotCom.Website.App.Controllers
 
             if(!mailerMessage.IsValid())
             {
-                return Json(new[] { "again", "The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try, try, try again." });
+                HttpContext.Response.StatusCode = (int) HttpStatusCode.NotAcceptable;
+                return Json("The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try, try, try again.");
             }
 
             mailerMessage = AppendWhois(mailerMessage);
@@ -46,15 +53,17 @@ namespace AdamDotCom.Website.App.Controllers
 
             if(mailer.Send(mailerMessage))
             {
-                return Json(new[] { "success", "Thanks! Expect a response soon." });
+                return View("Thanks");
             }
 
             if(mailer.Errors.Count != 0)
             {
-                return Json(new[] { "again", "Oh no!! The server gremlins are at it again, they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!" });
+                HttpContext.Response.StatusCode = (int) HttpStatusCode.BadRequest;
+                return Json("Oh no!! The server gremlins are at it again, they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!");
             }
 
-            return Json(new[] { "fail", string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink) });
+            HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+            return Json(string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
         }
 
         private MailerMessage AppendWhois(MailerMessage mailerMessage)
