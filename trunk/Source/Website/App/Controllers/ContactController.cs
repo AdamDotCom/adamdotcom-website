@@ -53,7 +53,7 @@ namespace AdamDotCom.Website.App.Controllers
 
             if(mailer.Send(mailerMessage))
             {
-                return Redirect("Thanks");
+                return RedirectToAction("Thanks");
             }
 
             if(mailer.Errors.Count != 0)
