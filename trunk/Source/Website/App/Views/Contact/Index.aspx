@@ -19,12 +19,12 @@
         }
         #contact input[type=text], #contact textarea
         {
-	        border: solid 1px #7B7542;
+            border: solid 1px #7B7542;
             padding: 4px;
         }
         #contact input[type=text], #contact textarea, #contact #message_wrap
         {
-	        margin: 5px;
+            margin: 5px;
             float: left;
             background-color: #F7F7F7;
             font-family: Arial, Sans-Serif;
@@ -39,14 +39,15 @@
         }
         #contact form span
         {
-        	font-weight: bold;
+            font-weight: bold;
         }
         #contact form
         {
-        	padding: 20px 0px 20px 0px;
+            padding: 20px 0px 20px 0px;
         }
     </style>
-    <%= Html.JavaScriptIncludeTag("htmlbox.min") %>
+    <%= Html.JavaScriptIncludeTag("htmlbox.min", "jquery.modaldialog") %>
+    <%= Html.StylesheetLinkTag("jquery.modaldialog") %>
     <script>
         $(function() {
             $('input:submit').click(function() {
@@ -55,11 +56,14 @@
                     url: '/contact-me',
                     data: $($('form[name="contact"]')).serialize(),
                     complete: function(xhr, textStatus) {
-                        if (textStatus === "success") {
+                        if (textStatus === 'success') {
                             window.location = 'contact/thanks';
                         }
                         else {
-                            alert(xhr.responseText);
+                            $.modaldialog.prompt(xhr.responseText, {
+                        		    title: 'Oh-oh!',
+                        		    timeout: 5
+                            });
                         }
                     }
                 });

@@ -21,7 +21,7 @@ namespace AdamDotCom.Common.Website
             return JavaScriptIncludeTag(scriptName);
         }
 
-        public static string JavaScriptIncludeTag(this HtmlHelper htmlHelper, string[] scriptNames)
+        public static string JavaScriptIncludeTag(this HtmlHelper htmlHelper, params string[] scriptNames)
         {
             var tagBuilder = new StringBuilder();
             foreach (string script in scriptNames)
@@ -47,14 +47,15 @@ namespace AdamDotCom.Common.Website
         {
             return StylesheetLinkTag(stylesheetName, mediaType);
         }
-
-        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, string[] stylesheets)
+/*
+        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, params string[] stylesheets)
         {
             return StylesheetLinkTag(htmlHelper, stylesheets, null);
         }
-
-        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, string[] stylesheets, string mediaType)
+*/
+        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, params string[] stylesheets)
         {
+        		string mediaType = "all";
             var tagBuilder = new StringBuilder();
             foreach (string stylesheet in stylesheets)
             {
