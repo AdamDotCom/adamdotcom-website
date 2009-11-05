@@ -49,20 +49,31 @@
     <%= Html.JavaScriptIncludeTag("htmlbox.min") %>
     <script>
         $(function() {
-            function postAsync() {
-                $.post('/contact/', $($('form[name="contact"]')).serialize());
+            $('input:submit').click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/contact-me',
+                    data: $($('form[name="contact"]')).serialize(),
+                    complete: function(xhr, textStatus) {
+                        if (textStatus === "success") {
+                            window.location = 'contact/thanks';
+                        }
+                        else {
+                            alert(xhr.responseText);
+                        }
+                    }
+                });
                 return false;
-            }
-            $('input:submit').click(postAsync);
+            });          
 
-            var hb_silk_icon_set_default = $("#message").css("height", "250px").css("width", "469px").htmlbox({
+            $("#message").css("height", "250px").css("width", "469px").htmlbox({
                 idir: "/public/images/htmlbox",
                 toolbars: [
                    ["paste", "separator_dots", "bold", "italic", "underline", "link", "unlink", "image", "code"]
                 ],
                 icons: "silk",
                 skin: "grey"
-            });            
+            });
         });
     </script>
 </asp:Content>
