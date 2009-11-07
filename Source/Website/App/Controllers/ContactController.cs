@@ -1,5 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using AdamDotCom.Common.Website;
 using AdamDotCom.Whois.Service.Proxy;
@@ -18,12 +18,31 @@ namespace AdamDotCom.Website.App.Controllers
             this.whoisService = whoisService;
         }
 
-        public ActionResult Index()
+        public ActionResult Thanks()
         {
             return View();
         }
 
-        public ActionResult Thanks()
+        public ActionResult IsFriendly()
+        {
+            if (HttpContext.Request != null)
+            {
+                var ipAddress = HttpContext.Request.UserHostAddress;
+                var referrer = (HttpContext.Request.UrlReferrer != null) ? HttpContext.Request.UrlReferrer.ToString() : string.Empty;
+
+                var whois = whoisService.WhoisEnhancedXml(ipAddress, "Canada,Calgary,Alberta", referrer);
+
+                if (whois.IsFriendly || whois.IsFilterMatch)
+                {
+                    return Content(MyWebPresence.EmailAccount);
+                }
+            }
+
+            Response.StatusCode = (int) HttpStatusCode.BadRequest;
+            return null;
+        }
+
+        public ActionResult Index()
         {
             return View();
         }
@@ -31,11 +50,12 @@ namespace AdamDotCom.Website.App.Controllers
         [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken, ValidateInput(false)]  
         public ActionResult Index(string name, string email, string subject, string message)
         {
+
             var mailerMessage = new MailerMessage
                               {
                                   FromAddress = email,
                                   FromName = name,
-                                  Body = message,
+                                  Body = StripHtml(message),
                                   Subject = string.Format("Adam.Kahtava.com response :: {0}", subject),
                                   ToAddress = MyWebPresence.EmailAccount,
                                   ToName = MyWebPresence.FullName
@@ -59,7 +79,7 @@ namespace AdamDotCom.Website.App.Controllers
             if(mailer.Errors.Count != 0)
             {
                 HttpContext.Response.StatusCode = (int) HttpStatusCode.BadRequest;
-                return Content("Oh no!! The server gremlins are at it again, they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!");
+                return Content("The server gremlins are at it again! they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!");
             }
 
             HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
@@ -71,9 +91,10 @@ namespace AdamDotCom.Website.App.Controllers
             //This really isn't important, if it works HURRAY! If not oh well.
             try
             {
-                var whois = whoisService.WhoisXml(HttpContext.Request.UserHostAddress);
+                var ipAddress = HttpContext.Request.UserHostAddress;
+                mailerMessage.Body += string.Format("\n\n----------\n IP Address: {0}", ipAddress);
 
-                mailerMessage.Body += string.Format("\n\n----------\n IP Address: {0}", whois.DomainName);
+                var whois = whoisService.WhoisXml(ipAddress);
                 if (whois.RegistryData.Registrant != null)
                 {
                     mailerMessage.Body += string.Format("\n Organization: {0}\n Country: {1}\n", whois.RegistryData.Registrant.Name, whois.RegistryData.Registrant.Country);
@@ -85,17 +106,11 @@ namespace AdamDotCom.Website.App.Controllers
             return mailerMessage;
         }
 
-        public JsonResult GetEmail()
+        private static string StripHtml(string htmlText)
         {
-            var whois = whoisService.WhoisEnhancedXml(null, "Canada,Calgary,Alberta", null);
-
-            if (whois.IsFriendly || whois.IsFilterMatch)
-            {
-                return Json(MyWebPresence.EmailLink);
-            }
-
-            Response.StatusCode = 400;
-            return null;
+            htmlText = htmlText.Replace("<br>", "\n");
+            htmlText = Regex.Replace(htmlText, @"<.*?>", string.Empty);
+            return htmlText;
         }
     }
 }

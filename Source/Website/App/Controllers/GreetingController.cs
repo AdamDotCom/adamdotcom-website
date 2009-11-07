@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Web.Mvc;
 using AdamDotCom.Website.App.Extensions;
 using AdamDotCom.Website.App.Models;
 using AdamDotCom.Whois.Service.Proxy;
@@ -19,11 +20,20 @@ namespace AdamDotCom.Website.App.Controllers
             this.whoisService = whoisService;
         }
 
-        public JsonResult Index()
+        public ActionResult Index()
         {
-            var whois = whoisService.WhoisEnhancedXml(null, "Canada,Calgary,Alberta", Request.UrlReferrer.ToString());
+            if (HttpContext.Request != null)
+            {
+                var ipAddress = HttpContext.Request.UserHostAddress;
+                var referrer = (HttpContext.Request.UrlReferrer != null) ? HttpContext.Request.UrlReferrer.ToString() : string.Empty;
 
-            return Json(new Greeting().Translate(whois));
+                var whois = whoisService.WhoisEnhancedXml(ipAddress, "Canada,Calgary,Alberta", referrer);
+
+                return Content(new Greeting().Translate(whois).ToString());
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return null;
         }
     }
 }
