@@ -9,10 +9,10 @@
   <h2>
     Sorry, an error occurred while processing your request.
   </h2>
-  <p>
-    Send me an email <a href="mailto:<%= MyWebPresence.EmailAccount %>?subject=I got this horrible error on your site and ..."><%= MyWebPresence.EmailAccount %></a> and tell me more about this error.<br />
-    Thanks, <br />
-    &nbsp;&nbsp;-Adam
+  <p style="padding-top: 40px; line-height: 20pt;">
+    Send me an email (<a href="mailto:<%= MyWebPresence.EmailAccount %>?subject=I found this ugly error on your site, it might be a bug and ..."><%= MyWebPresence.EmailAccount %></a>) and tell me more about this error.<br />
+    Thanks,<br />
+    &nbsp;&nbsp;&nbsp;-Adam
   </p> 
 </asp:Content>
 
