@@ -44,7 +44,7 @@
     }
     #contact #form-footer
     {
-      padding-left: 145px;
+      padding-left: 90px;
       position:relative; 
       text-align:center; 
       clear:both;
@@ -61,18 +61,17 @@
   <script>
     $(function() {
       $('input:submit').click(function() {
-        var contactForm = $('form[name="contact"]');
-        var contactFormItems = contactForm.find('input, textarea, iframe body');
+        var contactFormItems = $('form[name="contact"]').find('input[type=submit]');
         contactFormItems.attr('disabled', 'disabled');
         $('#spinner').toggle();
         
         $.ajax({
           type: 'POST',
           url: '/contact-me',
-          data: contactForm.serialize(),
+          data: $('form[name="contact"]').serialize(),
           complete: function(xhr, textStatus) {
             if (textStatus === 'success') {
-              window.location = 'contact/thanks';
+              window.location = '/contact/thanks';
             }
             else {
               contactFormItems.removeAttr('disabled')
@@ -88,7 +87,7 @@
         return false;
       });      
 
-      $("#message").css("height", "250px").css("width", "469px").htmlbox({
+      $("#message").css("height", "250px").css("width", "445px").htmlbox({
         idir: "/public/images/htmlbox",
         toolbars: [
            ["paste", "separator_dots", "bold", "italic", "underline", "link", "unlink", "image", "code"]
@@ -102,7 +101,7 @@
 
 <asp:Content ID="mainContent" ContentPlaceHolderID="MainContent" runat="server">
   <div id="contact">
-    Hey! Send me a message, drop me a line  . 
+    Hey! Send me a message, drop me a line. 
     <% using (Html.BeginForm("index", "contact", FormMethod.Post, new { name = "contact" }))
       { %>
       <label for="name">Name</label><%= Html.TextBox("name", string.Empty, new { size = "50" }) %>

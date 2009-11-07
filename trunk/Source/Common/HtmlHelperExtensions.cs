@@ -47,15 +47,15 @@ namespace AdamDotCom.Common.Website
         {
             return StylesheetLinkTag(stylesheetName, mediaType);
         }
-/*
+
+//        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, params string[] stylesheets)
+//        {
+//            return StylesheetLinkTag(htmlHelper, stylesheets, null);
+//        }
+
         public static string StylesheetLinkTag(this HtmlHelper htmlHelper, params string[] stylesheets)
         {
-            return StylesheetLinkTag(htmlHelper, stylesheets, null);
-        }
-*/
-        public static string StylesheetLinkTag(this HtmlHelper htmlHelper, params string[] stylesheets)
-        {
-        		string mediaType = "all";
+            string mediaType = "all";
             var tagBuilder = new StringBuilder();
             foreach (string stylesheet in stylesheets)
             {
