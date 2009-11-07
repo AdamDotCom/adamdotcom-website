@@ -22,7 +22,7 @@
       border: solid 1px #7B7542;
       padding: 4px;
     }
-    #contact input[type=text], #contact textarea, #contact #message_html
+    #contact input[type=text], #contact textarea, #contact #message_wrap
     {
       margin: 5px;
       float: left;
@@ -32,9 +32,6 @@
     }
     #contact input[type=submit]
     {
-      clear: both;
-      display: block;	
-      margin-left: 330px;
       font-size: 26px;
     }
     #contact form span
@@ -45,6 +42,19 @@
     {
       padding: 20px 0px 20px 0px;
     }
+    #contact #form-footer
+    {
+      padding-left: 145px;
+      position:relative; 
+      text-align:center; 
+      clear:both;
+    }
+    #contact #form-footer img, #contact #form-footer input
+    {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
   <%= Html.StylesheetLinkTag("jquery.modaldialog") %>
   <%= Html.JavaScriptIncludeTag("htmlbox.min", "jquery.modaldialog") %>
@@ -54,7 +64,7 @@
         var contactForm = $('form[name="contact"]');
         var contactFormItems = contactForm.find('input, textarea, iframe body');
         contactFormItems.attr('disabled', 'disabled');
-        $('spinner').toggle();
+        $('#spinner').toggle();
         
         $.ajax({
           type: 'POST',
@@ -66,7 +76,7 @@
             }
             else {
               contactFormItems.removeAttr('disabled')
-              $('spinner').toggle();
+              $('#spinner').toggle();
               
               $.modaldialog.prompt(xhr.responseText, {
                 title: 'Oh-oh!',
@@ -100,10 +110,12 @@
       <label for="subject">Subject</label><%= Html.TextBox("subject", string.Empty, new { size = "50" })%>
       <label for="message"><span>Message</span></label><%= Html.TextArea("message", string.Empty, new { rows = "12", cols = "65" })%>
       <%= Html.AntiForgeryToken() %>
-      <input title="Submit" type="submit" value="Send" />
-      <img id="spinner" src="/public/images/spinner.gif" alt="spinner" style="display: none;">
+      <div id="form-footer">
+        <input title="Submit" type="submit" value="Send" />
+        <img id="spinner" src="/public/images/spinner.gif" alt="spinner" style="display: none;" />
+        <div style="padding-top: 20px;"><strong>Privacy:</strong> I don’t collect, distribute, or sell e-mail addresses.</div>
+      </div>
     <%  } %>
-    <div style="padding-left: 180px;"><strong>Privacy:</strong> I don’t collect, distribute, or sell e-mail addresses.</div>
   </div>
 </asp:Content>
 
