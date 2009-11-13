@@ -72,11 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AmazonControllerTests.cs" />
+    <Compile Include="CachedServiceTests.cs" />
     <Compile Include="Controllers\ContactControllerTests.cs" />
     <Compile Include="Controllers\GreetingControllerTests.cs" />
     <Compile Include="Controllers\GreetingMockHelper.cs" />
-    <Compile Include="Controllers\ResumeControllerTests.cs" />
     <Compile Include="GreetingExtensionsTests.cs" />
     <Compile Include="LocalDataExtensionsTests.cs" />
     <Compile Include="RepositoryTests.cs" />
