@@ -1,52 +1,18 @@
 ﻿using System.Web.Mvc;
-using AdamDotCom.Resume.Service.Proxy;
 using AdamDotCom.Common.Website;
-using AdamDotCom.Website.App.Extensions;
+using AdamDotCom.Website.App.Services;
 
 namespace AdamDotCom.Website.App.Controllers
 {
-    using Resume = Resume.Service.Proxy.Resume;
-
     [HandleError]
     public class ResumeController : Controller
     {
-        private readonly IRepository repository;
-        private readonly IResume resumeService;
-
-        public ResumeController():this(new Repository(), new ResumeService())
-        {   
-        }
-
-        public ResumeController(IRepository repository, IResume resumeService)
-        {
-            this.repository = repository;
-            this.resumeService = resumeService;
-        }
-
         [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Index(string id)
         {
-            var resume = repository.Find<Resume>();
-
-            if (resume == null)
-            {
-                resume = UpdateResumeFromService(id);
-            }
-            else if(repository.IsStale<Resume>())
-            {
-                new AsynchronousBroker().FireAndForget<Resume>(UpdateResumeFromService, id);
-            }
-
-            ViewData.Add(resume);
+            ViewData.Add(new ResumeService().Find(id));
 
             return View();
-        }
-
-        internal Resume UpdateResumeFromService(string firstAndLastname)
-        {
-            var resume = resumeService.ResumeXml(firstAndLastname).Enrich();
-            repository.Save(resume);
-            return resume;
         }
     }
 }

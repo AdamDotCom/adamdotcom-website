@@ -26,6 +26,7 @@ namespace Unit.Tests
                                                                 },
                                  Specialties = "test-specialities"
                              };
+
             LocalDataExtensions.SaveLocal(resume);
 
             var resumeFromLoad = LocalDataExtensions.FindLocal(resume) as Resume;
