@@ -71,7 +71,7 @@
     <ul class="experience">
   <%  int zebra = 0;
     foreach(Position item in ViewData.Get<Resume>().Positions) {%>
-      <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><strong class="title"><%= item.Title %></strong><strong class="company"><%= item.Company %></strong><span class="period"><%= item.Period %></span><%= (item.Description) %></li>
+      <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><strong class="title"><%= item.Title %></strong> <strong class="company"><%= item.Company %></strong> <span class="period"><%= item.Period %></span> <%= (item.Description) %></li>
   <%  zebra++;
     }%>
     </ul>

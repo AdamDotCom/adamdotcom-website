@@ -47,7 +47,7 @@
     <% int zebra = 0;
        foreach (Review item in ViewData.Get<Reviews>())
        { %>
-      <li class="<%= zebra % 2 == 0 ? "" : "zebra" %>"><a href="<%= item.Url %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><strong><%= item.Title %> by <%= item.AuthorsMLA %></strong></a><p><%= item.Content %></p></li>
+      <li class="<%= zebra % 2 == 0 ? "" : "zebra" %>"><a href="<%= item.Url %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><strong><%= item.Title %> by <%= item.AuthorsMLA %></strong></a> <p><%= item.Content %></p></li>
     <%  zebra++;
        } %>
     </ul>  
