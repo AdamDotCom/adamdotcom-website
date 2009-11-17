@@ -22,9 +22,10 @@
                 {
                     if (position != null && position.Company != null)
                     {
-                        position.Company = position.Company.Replace("Corbis", string.Format("Corbis / Veer {0}", EnrichedMarkup("Veer.com, Calgary, Alberta, Canada")));
-                        position.Company = position.Company.Replace("Allstream", string.Format("MTS Allstream {0}", EnrichedMarkup("CAAF: City of Calgary Application Architecture Framework")));
-                        position.Company = position.Company.Replace("Cactus Commerce", string.Format("Cactus Commerce {0}", EnrichedMarkup("Ottawa, Ontario, Gatineau, Quebec, GameStop, Folica, Ecommerce, E-commerce, B2B, B2C, C2C, Biztalk")));
+                        position.Company = position.Company.Replace("Corbis", string.Format("Corbis / Veer {0}", EnrichedMarkup("Veer.com, Veer Marketplace, Calgary, Alberta, Canada")));
+                        position.Company = position.Company.Replace("Critical Mass", string.Format("Critical Mass {0}", EnrichedMarkup("Hyatt, Calgary, Alberta, Canada")));                      
+                        position.Company = position.Company.Replace("Allstream", string.Format("MTS Allstream {0}", EnrichedMarkup("CAAF: City of Calgary Application Architecture Framework, Calgary, Alberta, Canada")));
+                        position.Company = position.Company.Replace("Cactus Commerce", string.Format("Cactus Commerce {0}", EnrichedMarkup("Ottawa, Ontario, Gatineau, Quebec, GameStop, Folica, Ecommerce, E-commerce, B2B, B2C, C2C, Biztalk, Commerce Server")));
                         position.Company = position.Company.Replace("Mercurial Communications", string.Format("Mercurial Communications {0}", EnrichedMarkup("Netscape 8.0 Browser, Tempus Microsystems, Victoria, British Columbia, Canada")));
                     }
                     if (position != null && position.Description != null)
@@ -59,7 +60,7 @@
             var acronymTable = new[]
                                    {
                                        new[] {"CSS", "Cascading Style Sheets"},
-                                       new[] {"IIS", "Internet Information Services"},
+                                       new[] {"IIS", "Microsoft's Internet Information Services"},
                                        new[] {"HTML", "Hyper Text Markup Language"},
                                        new[] {"PHP", "PHP: Hypertext Preprocessor"},
                                        new[] {"API", "Application programming interface"},
@@ -70,10 +71,10 @@
                                        new[] {"SOAP", "Simple Object Access Protocol"},
                                        new[] {"AJAX", "Asynchronous JavaScript and XML"},
                                        new[] {"TDD", "Test Driven Design"},
-                                       new[] {"MOSS", "Microsoft Office Sharepoint Server"},
-                                       new[] {"WCF", "Windows Communication Foundation"},
-                                       new[] {"TFS", "Microsoft Team System"},
-                                       new[] {"VSS", "Microsoft Visual Source Safe"}, 
+                                       new[] {"MOSS", "Microsoft's Office Sharepoint Server"},
+                                       new[] {"WCF", "Microsoft's Windows Communication Foundation"},
+                                       new[] {"TFS", "Microsoft's Team Foundation System"},
+                                       new[] {"VSS", "Microsoft's Visual Source Safe"}, 
                                        new[] {"JSP", "JavaServer Pages"},
                                        new[] {"JSTL", "JavaServer Pages Standard Tag Library"},
                                        new[] {"MVC", "Model View Controller"},
@@ -85,12 +86,12 @@
                                        new[] {"CMS", "Content Management System"},
                                        new[] {"SQL", "Structured Query Language"},
                                        new[] {"T-SQL", "Transact Structured Query Language"},
-                                       new[] {"LINQ", "Microsoft Language Integrated Query"},
+                                       new[] {"LINQ", "Microsoft's Language Integrated Query"},
                                        new[] {"CAAF Framework", "The City of Calgary's Application Architecture Framework"},
                                        new[] {"CAAF", "The City of Calgary's Application Architecture Framework"},
-                                       new[] {"C#", "Microsofts C-Sharp Programming Language"},
-                                       new[] {"SOA", "Service-oriented Architecture"},
-                                       new[] {"SEO", "Search engine optimization"},
+                                       new[] {"C#", "Microsoft's C-Sharp Programming Language"},
+                                       new[] {"SOA", "Service Oriented Architecture"},
+                                       new[] {"SEO", "Search Engine Optimization"},
                                        new[] {"PL/SQL", "Procedural Language / Structured Query Language"}
                                    };
 
