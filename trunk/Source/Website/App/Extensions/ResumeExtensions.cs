@@ -5,8 +5,8 @@
     public static class ResumeExtensions
     {
         /// <summary>
-        /// Make my resume more search engine friendly.
-        /// This is really specific to my resume, not generic at all.
+        /// This makes my resume more search engine friendly. 
+        /// Not much to see around here...
         /// </summary>
         /// <param name="resume"></param>
         /// <returns></returns>

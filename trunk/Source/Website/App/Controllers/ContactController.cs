@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using AdamDotCom.Common.Website;
+using AdamDotCom.Website.App.Extensions;
 using AdamDotCom.Whois.Service.Proxy;
 
 namespace AdamDotCom.Website.App.Controllers
@@ -48,18 +49,15 @@ namespace AdamDotCom.Website.App.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken, ValidateInput(false)]  
-        public ActionResult Index(string name, string email, string subject, string message)
+        public ActionResult Send()
         {
+            var mailerMessage = new MailerMessage();
+            TryUpdateModel(mailerMessage);
 
-            var mailerMessage = new MailerMessage
-                              {
-                                  FromAddress = email,
-                                  FromName = name,
-                                  Body = StripHtml(message),
-                                  Subject = string.Format("Adam.Kahtava.com response :: {0}", subject),
-                                  ToAddress = MyWebPresence.EmailAccount,
-                                  ToName = MyWebPresence.FullName
-                              };
+            mailerMessage.Body = StripHtml(mailerMessage.Body);
+            mailerMessage.Subject = string.Format("Adam.Kahtava.com response :: {0}", mailerMessage.Subject);
+            mailerMessage.ToAddress = MyWebPresence.EmailAccount;
+            mailerMessage.ToName = MyWebPresence.FullName;
 
             if(!mailerMessage.IsValid())
             {
@@ -67,7 +65,7 @@ namespace AdamDotCom.Website.App.Controllers
                 return Content("The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try, try, try again.");
             }
 
-            mailerMessage = AppendWhois(mailerMessage);
+            mailerMessage.AppendWhois(whoisService, HttpContext.Request.UserHostAddress);
 
             var mailer = new Mailer();
 
@@ -84,26 +82,6 @@ namespace AdamDotCom.Website.App.Controllers
 
             HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
             return Content(string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
-        }
-
-        private MailerMessage AppendWhois(MailerMessage mailerMessage)
-        {
-            //This really isn't important, if it works HURRAY! If not oh well.
-            try
-            {
-                var ipAddress = HttpContext.Request.UserHostAddress;
-                mailerMessage.Body += string.Format("\n\n----------\n IP Address: {0}", ipAddress);
-
-                var whois = whoisService.WhoisXml(ipAddress);
-                if (whois.RegistryData.Registrant != null)
-                {
-                    mailerMessage.Body += string.Format("\n Organization: {0}\n Country: {1}\n", whois.RegistryData.Registrant.Name, whois.RegistryData.Registrant.Country);
-                }
-            }
-            catch
-            {
-            }
-            return mailerMessage;
         }
 
         private static string StripHtml(string htmlText)
