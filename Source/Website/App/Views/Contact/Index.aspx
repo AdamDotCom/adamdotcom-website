@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage"
+ %>
 <%@ Import Namespace="AdamDotCom.Common.Website"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Controllers"%>
 
@@ -22,7 +23,7 @@
       border: solid 1px #7B7542;
       padding: 4px;
     }
-    #contact input[type=text], #contact textarea, #contact #message_wrap
+    #contact input[type=text], #contact textarea, #contact #body_wrap
     {
       margin: 5px;
       float: left;
@@ -67,7 +68,7 @@
         
         $.ajax({
           type: 'POST',
-          url: '/contact-me',
+          url: '/contact/send',
           data: $('form[name="contact"]').serialize(),
           complete: function(xhr, textStatus) {
             if (textStatus === 'success') {
@@ -87,7 +88,7 @@
         return false;
       });      
 
-      $("#message").css("height", "250px").css("width", "445px").htmlbox({
+      $("#body").css("height", "250px").css("width", "445px").htmlbox({
         idir: "/public/images/htmlbox",
         toolbars: [
            ["paste", "separator_dots", "bold", "italic", "underline", "link", "unlink", "image", "code"]
@@ -102,12 +103,12 @@
 <asp:Content ID="mainContent" ContentPlaceHolderID="MainContent" runat="server">
   <div id="contact">
     Hey! Send me a message, drop me a line. 
-    <% using (Html.BeginForm("index", "contact", FormMethod.Post, new { name = "contact" }))
+    <% using (Html.BeginForm("send", "contact", FormMethod.Post, new { name = "contact" }))
       { %>
-      <label for="name">Name</label><%= Html.TextBox("name", string.Empty, new { size = "50" }) %>
-      <label for="email"><span>Email</span></label><%= Html.TextBox("email", string.Empty, new { size = "50" })%>
+      <label for="name">Name</label><%= Html.TextBox("fromName", string.Empty, new { size = "50" })%>
+      <label for="email"><span>Email</span></label><%= Html.TextBox("fromAddress", string.Empty, new { size = "50" })%>
       <label for="subject">Subject</label><%= Html.TextBox("subject", string.Empty, new { size = "50" })%>
-      <label for="message"><span>Message</span></label><%= Html.TextArea("message", string.Empty, new { rows = "12", cols = "65" })%>
+      <label for="body"><span>Message</span></label><%= Html.TextArea("body", string.Empty, new { rows = "12", cols = "65" })%>
       <%= Html.AntiForgeryToken() %>
       <div id="form-footer">
         <input title="Submit" type="submit" value="Send" />
