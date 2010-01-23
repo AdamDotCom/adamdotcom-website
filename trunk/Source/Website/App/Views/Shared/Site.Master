@@ -62,7 +62,7 @@
       <div id="footer" style="clear: both;">
         <a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
         <a id="powered" href="http://wordpress.org/">WordPress</a>
-        <div id="copyright">Copyright &copy; 2006-2009 Adam.Kahtava.com / AdamDotCom</div>
+        <div id="copyright">Copyright &copy; 2006-<%= DateTime.Now.Year %> Adam.Kahtava.com / AdamDotCom</div>
         <div id="themeinfo">Theme by <a href="http://www.neoease.com/">mg12</a>. Valid <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> and <a href="http://jigsaw.w3.org/css-validator/">CSS 3</a>.</div>
       </div>
     </div>

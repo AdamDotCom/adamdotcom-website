@@ -54,7 +54,7 @@ namespace AdamDotCom.Website.App.Controllers
             var mailerMessage = new MailerMessage();
             TryUpdateModel(mailerMessage);
 
-            mailerMessage.Body = StripHtml(mailerMessage.Body);
+            mailerMessage.Body = mailerMessage.Body;
             mailerMessage.Subject = string.Format("Adam.Kahtava.com response :: {0}", mailerMessage.Subject);
             mailerMessage.ToAddress = MyWebPresence.EmailAccount;
             mailerMessage.ToName = MyWebPresence.FullName;
@@ -62,7 +62,7 @@ namespace AdamDotCom.Website.App.Controllers
             if(!mailerMessage.IsValid())
             {
                 HttpContext.Response.StatusCode = (int) HttpStatusCode.NotAcceptable;
-                return Content("The <span>email</span> and <span>message</span> are mandatory. Fill those fields out and try, try, try again.");
+                return Content("The <span>email</span> and <span>message</span> ensure those fields are correct. Then try, try, try again.");
             }
 
             mailerMessage.AppendWhois(whoisService, HttpContext.Request.UserHostAddress);
@@ -82,13 +82,6 @@ namespace AdamDotCom.Website.App.Controllers
 
             HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
             return Content(string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
-        }
-
-        private static string StripHtml(string htmlText)
-        {
-            htmlText = htmlText.Replace("<br>", "\n");
-            htmlText = Regex.Replace(htmlText, @"<.*?>", string.Empty);
-            return htmlText;
         }
     }
 }
