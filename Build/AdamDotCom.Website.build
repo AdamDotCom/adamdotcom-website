@@ -5,16 +5,12 @@
   
   <target name="all" depends="compile test assets"/>
 
-  <target name="clean" description="removes all generated build products">
+  <target name="compile" description="compiles the library DLLs used by the application">
     <delete>
       <fileset>
-        <include name="..\Final-Deployment\**\*.*" />
+        <include name="..\Final-Deployment\bin\*.*" />
       </fileset>
-    </delete>
-  </target>
-
-  <target name="compile" description="compiles the library DLLs used by the application" depends="clean">
-    <mkdir dir="..\Final-Deployment\bin\" />
+    </delete>    
     <csc target="library" output="..\Final-Deployment\bin\${project::get-name()}.Common.dll" debug="false" warninglevel="0" >
       <references>
       	<include name="..\Dependencies\*.dll" />
@@ -92,12 +88,12 @@
   </target>
   
   <target name="assets" description="gathers the assets for a compiled MVC application" depends="compile">
-    <copy todir="..\Final-Deployment\bin" flatten="true">
+    <copy todir="..\Final-Deployment\bin" flatten="true" overwrite="true">
       <fileset basedir="..\Dependencies">
         <include name="*.dll" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\App\Views">
+    <copy todir="..\Final-Deployment\App\Views" overwrite="true">
       <fileset basedir="..\Source\Website\App\Views">
         <include name="**\*.aspx" />
         <include name="**\*.ascx" />
@@ -105,7 +101,7 @@
         <include name="**\*.master" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\Public">
+    <copy todir="..\Final-Deployment\Public" overwrite="true">
       <fileset basedir="..\Source\Website\Public">
         <include name="**\*.jpg" />
         <include name="**\*.png" />
@@ -114,7 +110,7 @@
         <include name="**\*.css" />
       </fileset>
     </copy>
-    <copy todir="..\Final-Deployment\">
+    <copy todir="..\Final-Deployment\" overwrite="true">
       <fileset basedir="..\Source\Website\">
       	<include name="Default.aspx" />
         <include name="Global.asax" />
