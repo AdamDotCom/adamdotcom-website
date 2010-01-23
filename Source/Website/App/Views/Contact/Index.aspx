@@ -4,7 +4,7 @@
 <%@ Import Namespace="AdamDotCom.Website.App.Controllers"%>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitleContent" runat="server">
-  Adam.Kahtava.com / AdamDotCom - Contact Me
+  Contact Me &raquo; Adam.Kahtava.com / AdamDotCom
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">

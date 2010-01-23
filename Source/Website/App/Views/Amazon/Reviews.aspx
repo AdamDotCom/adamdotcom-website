@@ -3,7 +3,7 @@
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-  Adam.Kahtava.com / AdamDotCom - Book Reviews
+  Book Reviews &raquo; Adam.Kahtava.com / AdamDotCom
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">

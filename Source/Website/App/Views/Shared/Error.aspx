@@ -2,7 +2,7 @@
 <%@ Import Namespace="AdamDotCom.Website.App"%>
 
 <asp:Content ID="errorTitle" ContentPlaceHolderID="TitleContent" runat="server">
- Adam.Kahtava.com / AdamDotCom - Oh no!! Abort, abort. Something went horribly wrong.
+ Oh no!! Abort, abort. Something went horribly wrong &raquo; Adam.Kahtava.com / AdamDotCom
 </asp:Content>
 
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
