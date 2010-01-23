@@ -3,7 +3,7 @@
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-  Adam.Kahtava.com / AdamDotCom - Resume, Curriculum Vitae, Software Developer, Web Developer 
+  Resume of a Web Developer, Software Developer, and Front-end Engineeer (Curriculum Vitae, CV) &raquo; Adam.Kahtava.com / AdamDotCom
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -71,7 +71,7 @@
     <ul class="experience">
   <%  int zebra = 0;
     foreach(Position item in ViewData.Get<Resume>().Positions) {%>
-      <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><strong class="title"><%= item.Title %></strong><strong class="company"><%= item.Company %></strong><span class="period"><%= item.Period %></span><%= (item.Description) %></li>
+      <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><strong class="title"><%= item.Title %></strong> <strong class="company"><%= item.Company %></strong> <span class="period"><%= item.Period %></span> <%= (item.Description) %></li>
   <%  zebra++;
     }%>
     </ul>
