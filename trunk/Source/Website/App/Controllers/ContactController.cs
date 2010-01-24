@@ -40,7 +40,7 @@ namespace AdamDotCom.Website.App.Controllers
             }
 
             Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            return null;
+            return Content("Unknown");
         }
 
         public ActionResult Index()
@@ -53,8 +53,6 @@ namespace AdamDotCom.Website.App.Controllers
         {
             var mailerMessage = new MailerMessage();
             TryUpdateModel(mailerMessage);
-
-            mailerMessage.Body = mailerMessage.Body;
             mailerMessage.Subject = string.Format("Adam.Kahtava.com response :: {0}", mailerMessage.Subject);
             mailerMessage.ToAddress = MyWebPresence.EmailAccount;
             mailerMessage.ToName = MyWebPresence.FullName;
