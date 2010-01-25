@@ -69,12 +69,12 @@
   </div>
   <%= Html.AnalyticsTag() %>
   <script type="text/javascript">
-      $(function() {
-          if (document.cookie.indexOf('monster',0) === -1) {
-              $.get('/contact/isfriendly');
-              document.cookie = 'monster=isfriendly-lookup:true;expires;path=/;';
-          }
-      });
+    $(function() {
+      if (document.cookie.indexOf('monster',0) === -1) {
+        $.get('/contact/isfriendly');
+        document.cookie = 'monster=isfriendly-lookup:true;expires;path=/;';
+      }
+    });
   </script>
 </body>
 </html>
