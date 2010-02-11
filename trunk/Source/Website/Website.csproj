@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\AdamDotCom.Amazon.Service.Proxy.dll</HintPath>
     </Reference>
+    <Reference Include="AdamDotCom.OpenSource.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\AdamDotCom.OpenSource.Service.Proxy.dll</HintPath>
+    </Reference>
     <Reference Include="AdamDotCom.Resume.Service.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Dependencies\AdamDotCom.Resume.Service.Proxy.dll</HintPath>
@@ -54,7 +58,10 @@
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -72,12 +79,16 @@
   <ItemGroup>
     <Compile Include="App\Controllers\AmazonController.cs" />
     <Compile Include="App\Controllers\ContactController.cs" />
+    <Compile Include="App\Controllers\ProjectsController.cs" />
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
     <Compile Include="App\Controllers\ResumeController.cs" />
     <Compile Include="App\Extensions\AnalyticsExtensions.cs" />
     <Compile Include="App\Extensions\MailerExtensions.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
+    <Compile Include="App\Extensions\ProjectsExtensions.cs" />
+    <Compile Include="App\Models\GitHubProjects.cs" />
+    <Compile Include="App\Models\GoogleCodeProject.cs" />
     <Compile Include="App\MyWebPresence.cs" />
     <Compile Include="App\Extensions\ResumeExtensions.cs">
       <SubType>Code</SubType>
@@ -86,7 +97,9 @@
     <Compile Include="App\Models\Greeting.cs" />
     <Compile Include="App\Models\ToReadList.cs" />
     <Compile Include="App\Models\HaveReadList.cs" />
+    <Compile Include="App\Services\GoogleCodeProjectsService.cs" />
     <Compile Include="App\Services\HaveReadListService.cs" />
+    <Compile Include="App\Services\GitHubProjectsService.cs" />
     <Compile Include="App\Services\ReviewListService.cs" />
     <Compile Include="App\Services\ToReadListService.cs" />
     <Compile Include="App\Services\ResumeService.cs" />
@@ -104,6 +117,7 @@
     <Content Include="App\Views\Amazon\Reviews.aspx" />
     <Content Include="App\Views\Contact\Thanks.aspx" />
     <Content Include="App\Views\Contact\Index.aspx" />
+    <Content Include="App\Views\Projects\Index.aspx" />
     <Content Include="App\Views\Resume\Index.aspx" />
     <Content Include="App\Views\Shared\_ContactBlock.ascx" />
     <Content Include="Default.aspx" />

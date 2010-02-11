@@ -75,3 +75,5 @@
     </div>
   </div>  
 </asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server" />

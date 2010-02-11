@@ -1,5 +1,7 @@
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Projects>" %>
+<%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Common.Website"%>
-<%@ Import Namespace="AdamDotCom.Website.App.Extensions"%>
+
 <%@ OutputCache Duration="172800" VaryByParam="None" Shared="true" %>
 <div id="northsidebar">
   <div class="widget">
@@ -12,7 +14,7 @@
       <img src="/public/images/contact-me/Adam-Kahtava-2009-150px.png" width="155" height="154" />
     </div>
     <div>
-      <a class="contact-me" href="/contact-me/" title="Contact me"><img src="/public/images/contact-me/contact-me.png" width="152" height="26" alt="contact-me" /><span>Contact me</span></a><br />
+      <a class="contact-me" href="/contact-me/" title="Contact me"><span>Contact me</span></a><br />
     </div>
   </div>
   <div class="widget">
@@ -32,12 +34,10 @@
       <div class="delicious-networkbadge"><span class="delicious-network-username"><a href="http://delicious.com/kahtava"><img width="15" height="15" border="0" alt="kahtava" src="/public/images/contact-me/delicious.med.gif"/></a> I am <a href="http://delicious.com/kahtava">kahtava</a> on <a href="http://delicious.com">Delicious</a></span><br/><span class="delicious-network-add"><a href="http://delicious.com/network?add=kahtava"><img width="15" height="15" border="0" alt="delicious" src="/public/images/contact-me/add.gif"/></a> <a href="http://delicious.com/network?add=kahtava">Add me to your  network</a></span><br/></div>
     </div>
   </div>
-<%--
-  <div class="widget">
-    <h3>Contribute</h3>
-      <!-- website -->
-      <!-- services -->
-      <!-- scripts -->
+
+  <div class="widget contribute">
+    <h3>Contribute / Code Samples</h3>
+    <%= Html.Action("Index", "Projects", new { gitHubId="adamdotcom", googleCodeId = "adam.kahtava.com" })%>
   </div>
---%>
+
 </div>

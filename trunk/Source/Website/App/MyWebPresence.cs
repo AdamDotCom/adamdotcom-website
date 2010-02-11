@@ -4,6 +4,8 @@
     {
         private static string AccountHandle1 { get { return "AdamDotCom"; } }
         private static string AccountHandle2 { get { return "Kahtava"; } }
+        private static string AccountHandle3 { get { return "adam.kahtava.com"; } }
+
         public static string EmailAccount { get { return "adam@kahtava.com"; } }
         public static string FullName { get { return "Adam Kahtava"; } }
         public static string SiteName { get { return "Adam.Kahtava.com / AdamDotCom"; } }
@@ -21,5 +23,8 @@
         public static string StackoverflowLink { get { return string.Format("<a href=\"http://stackoverflow.com/users/1778/adam-kahtava\">{0}</a>", "my profile on Stackoverflow"); } }
         public static string PublicLink { get { return string.Format("<a href=\"http://www.google.com/calendar/embed?src=kahtava.com_3b7tc69opbskf5cqgjflihhqpk@group.calendar.google.com\">{0}</a>", "my calendar of local events"); } }
         public static string SkypeLink { get { return string.Format("<a href=\"callto://Adam.Kahtava.com\">{0}</a>", "call me on Skype"); } }
+
+        public static string GitHubId { get { return AccountHandle1; } }
+        public static string GoogleCodeId { get { return AccountHandle3; } }
     }
 }
