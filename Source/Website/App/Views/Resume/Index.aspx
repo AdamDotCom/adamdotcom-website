@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Resume.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
@@ -82,8 +83,4 @@
   <%  } %>
     </ul>
   </div>
-</asp:Content>
-
-<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContent" runat="server">
-  <% Html.RenderPartial("_ContactBlock"); %>
 </asp:Content>

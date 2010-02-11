@@ -1,3 +1,5 @@
+<%@ Import Namespace="AdamDotCom.Common.Website"%>
+<%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Extensions"%>
 <%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -12,10 +14,30 @@
     }
     #northsidebar .contact-me span
     {
-      margin-left: -150px;
-      font-size: 26px;
-      position: absolute;
-      visibility: hidden;
+        padding-left: 2px;
+        font-size: 26px;
+    }
+    #northsidebar .contribute span.extended 
+    {
+    	font-size: 10px;
+    	line-height: 8px;
+    }
+    #northsidebar .contribute span.hover
+    {
+    	display: none;
+    }
+    #northsidebar .contribute li
+    {
+    	list-style-position: outside;
+    	background: none;
+    }
+    #northsidebar .contribute li.github
+    {
+    	background: url(/public/images/contribute/github-public-icon.png) no-repeat;
+    }
+    #northsidebar .contribute li.google-code
+    {
+    	background: url(/public/images/contribute/google-code-icon.png) no-repeat;
     }
   </style>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -53,9 +75,10 @@
         <div id="main">
           <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-         
         <div id="sidebar">
-          <asp:ContentPlaceHolder ID="SidebarContent" runat="server" />
+          <asp:ContentPlaceHolder ID="SidebarContent" runat="server">
+            <% Html.RenderPartial("_ContactBlock"); %>
+          </asp:ContentPlaceHolder>
         </div>
         <div class="fixed"/>
       </div>
@@ -69,12 +92,12 @@
   </div>
   <%= Html.AnalyticsTag() %>
   <script type="text/javascript">
-      $(function() {
-          if (document.cookie.indexOf('monster',0) === -1) {
-              $.get('/contact/isfriendly');
-              document.cookie = 'monster=isfriendly-lookup:true;expires;path=/;';
-          }
-      });
+    $(function() {
+      if (document.cookie.indexOf('monster',0) === -1) {
+        $.get('/contact/isfriendly');
+        document.cookie = 'monster=isfriendly-lookup:true;expires;path=/;';
+      }
+    });
   </script>
 </body>
 </html>

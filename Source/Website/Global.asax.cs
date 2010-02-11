@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using AdamDotCom.Common.Website;
+using AdamDotCom.Website.App;
 
 namespace AdamDotCom.Website
 {
@@ -29,6 +30,15 @@ namespace AdamDotCom.Website
                                     toReadListId = "1XZDXVXHE3946"
                                 });
             routes.MapRoute("ContactMe-SEO", "contact-me", new {controller = "Contact", action = "Index"});
+
+            routes.MapRoute("Projects", "open-source-projects",
+                            new
+                                {
+                                    controller = "Projects",
+                                    action = "Index",
+                                    gitHubId = MyWebPresence.GitHubId,
+                                    googleCodeId = MyWebPresence.GoogleCodeId
+                                });
 
             routes.Add("Default", new RouteExtensions("{controller}/{action}/{id}",
                                   new RouteValueDictionary(
