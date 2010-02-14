@@ -72,23 +72,22 @@ namespace AdamDotCom.Website.App.Extensions
         {
             if (project.Name == "scripts")
             {
-                project.Description = "Scripts that I use on a daily basis. You'll find JavaScript, Ruby, and PowerShell here";
+                project.Description = "Scripts that I use on a daily basis. You'll find JavaScript, Ruby, and PowerShell here. You may be interested in learning more about my PoweShell work <a href='http://adam.kahtava.com/journal/category/powershell/'>here</a>";
             }
 
             if (project.Name == "services")
             {
-                project.Description = "The services that deliver the data to this website. Here you'll find a Whois service, an Amazon service, a Resume (from LinkedIn) service, and an Open Source Projects service that combines project repositories from both GitHub and Google Code";
+                project.Description = "The services that deliver the data to this website. Here you'll find a Whois service, an Amazon service, a Resume (from LinkedIn) service, and an Open Source Projects service that combines project repositories from both GitHub and Google Code. There's more information about these services <a href='http://adam.kahtava.com/journal/category/open-source/adc-services/'>here</a>";
             }
 
             if (project.Name == "website" && project.Url.Contains("code.google"))
             {
-                project.Description = "The source code for this very sentance you're reading. The source for this page, and the source for this entire site";
+                project.Description = "The source code for this very sentance you're reading. The source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
             }
 
             if (project.Name == "amazon")
             {
-                project.Description =
-                    "An Amazon Web Services (AWS) client. This is the basis of my Amazon service (see my Services repository below)";
+                project.Description = "An Amazon Web Services (AWS) client. This is the basis of my Amazon service. Learn more about this topic <a href='http://adam.kahtava.com/journal/category/amazon/'>here</a>";
             }
 
             project.Name = project.Name.Replace("-", " ").Capitalize();
