@@ -82,7 +82,7 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "website" && project.Url.Contains("code.google"))
             {
-                project.Description = "The source code for this very sentance you're reading. The source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
+                project.Description = "The source code for this very sentence! As well as the source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
             }
 
             if (project.Name == "amazon")
