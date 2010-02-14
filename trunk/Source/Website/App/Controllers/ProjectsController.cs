@@ -9,21 +9,27 @@ namespace AdamDotCom.Website.App.Controllers
     [HandleError]
     public class ProjectsController : Controller
     {
+        [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Index(string gitHubId, string googleCodeId)
         {
-            var projects = new Projects();
+            string projectHostUsernamePairs = string.Empty;          
             if (!string.IsNullOrEmpty(gitHubId))
             {
-                projects.AddRange(new GitHubProjectsService().Find(gitHubId));
+                projectHostUsernamePairs += BuildProjectHostUsernamePair(ProjectHost.GitHub, gitHubId);
             }
             if (!string.IsNullOrEmpty(googleCodeId))
             {
-                projects.AddRange(new GoogleCodeProjectsService().Find(googleCodeId));
+                projectHostUsernamePairs += BuildProjectHostUsernamePair(ProjectHost.GoogleCode, googleCodeId);
             }
-           
-            ViewData.Add(projects.RemoveOldDuplicates().Enhance());
+            
+            ViewData.Add(new ProjectsService().Find(projectHostUsernamePairs).RemoveOldDuplicates().Enhance());
 
             return View();
+        }
+
+        private string BuildProjectHostUsernamePair(ProjectHost projectHost, string username)
+        {
+            return string.Format("{0}:{1},", projectHost, username);
         }
     }
 }
