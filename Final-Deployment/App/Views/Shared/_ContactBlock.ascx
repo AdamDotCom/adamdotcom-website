@@ -38,7 +38,7 @@
 
   <div class="widget contribute">
     <h3>Contribute / Code Samples</h3>
-    <%= Html.Action("Index", "Projects", new { gitHubId="adamdotcom", googleCodeId = "adam.kahtava.com" })%>
+    <%= Html.Action("Index", "Projects", new { gitHubId = "adamdotcom", googleCodeId = "adam.kahtava.com" })%>
   </div>
 
 </div>

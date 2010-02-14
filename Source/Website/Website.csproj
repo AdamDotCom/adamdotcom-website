@@ -87,8 +87,6 @@
     <Compile Include="App\Extensions\MailerExtensions.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
     <Compile Include="App\Extensions\ProjectsExtensions.cs" />
-    <Compile Include="App\Models\GitHubProjects.cs" />
-    <Compile Include="App\Models\GoogleCodeProject.cs" />
     <Compile Include="App\MyWebPresence.cs" />
     <Compile Include="App\Extensions\ResumeExtensions.cs">
       <SubType>Code</SubType>
@@ -97,9 +95,8 @@
     <Compile Include="App\Models\Greeting.cs" />
     <Compile Include="App\Models\ToReadList.cs" />
     <Compile Include="App\Models\HaveReadList.cs" />
-    <Compile Include="App\Services\GoogleCodeProjectsService.cs" />
     <Compile Include="App\Services\HaveReadListService.cs" />
-    <Compile Include="App\Services\GitHubProjectsService.cs" />
+    <Compile Include="App\Services\ProjectsService.cs" />
     <Compile Include="App\Services\ReviewListService.cs" />
     <Compile Include="App\Services\ToReadListService.cs" />
     <Compile Include="App\Services\ResumeService.cs" />

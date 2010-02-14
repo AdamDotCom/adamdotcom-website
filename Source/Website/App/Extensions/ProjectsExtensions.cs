@@ -17,8 +17,8 @@ namespace AdamDotCom.Website.App.Extensions
             }
 
             var orderedProjects = projects.Clean().OrderBy(p => p.Name).ThenByDescending(p => p.LastModified).ToList();
-            
             var projectsToReturn = new Projects();
+
             var lastProjectName = string.Empty;
             for (var i = 0; i < orderedProjects.Count; i++)
             {
@@ -72,25 +72,23 @@ namespace AdamDotCom.Website.App.Extensions
         {
             if (project.Name == "scripts")
             {
-                project.Description =
-                    "A collection of my scripts that I use on a daily basis and other things. You'll find JavaScript, Ruby, and PowerShell here";
+                project.Description = "Scripts that I use on a daily basis. You'll find JavaScript, Ruby, and PowerShell here";
             }
 
             if (project.Name == "services")
             {
-                project.Description =
-                    "These are the services that drive this very site. Here you'll find a Whois, Amazon, Resume (from LinkedIn), and an Open Source Projects (from GitHub and Google Code) Service";
+                project.Description = "The services that deliver the data to this website. Here you'll find a Whois service, an Amazon service, a Resume (from LinkedIn) service, and an Open Source Projects service that combines project repositories from both GitHub and Google Code";
             }
 
             if (project.Name == "website" && project.Url.Contains("code.google"))
             {
-                project.Description = "Here you'll find the source code for this very page and site";
+                project.Description = "The source code for this very sentance you're reading. The source for this page, and the source for this entire site";
             }
 
             if (project.Name == "amazon")
             {
                 project.Description =
-                    "This is an Amazon Web Services (AWS) client. This is actually the basis of my Amazon Service (see my Services repository too)";
+                    "An Amazon Web Services (AWS) client. This is the basis of my Amazon service (see my Services repository below)";
             }
 
             project.Name = project.Name.Replace("-", " ").Capitalize();
