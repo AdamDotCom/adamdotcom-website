@@ -31,7 +31,7 @@ namespace AdamDotCom.Website
                                 });
             routes.MapRoute("ContactMe-SEO", "contact-me", new {controller = "Contact", action = "Index"});
 
-            routes.MapRoute("Projects", "open-source-projects",
+            routes.MapRoute("Projects-SEO", "open-source-projects",
                             new
                                 {
                                     controller = "Projects",
@@ -39,6 +39,8 @@ namespace AdamDotCom.Website
                                     gitHubId = MyWebPresence.GitHubId,
                                     googleCodeId = MyWebPresence.GoogleCodeId
                                 });
+
+            routes.MapRoute("Services-SEO", "publicly-available-web-services", new {controller = "Services", action = "Index"});
 
             routes.Add("Default", new RouteExtensions("{controller}/{action}/{id}",
                                   new RouteValueDictionary(

@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="App\Controllers\AmazonController.cs" />
     <Compile Include="App\Controllers\ContactController.cs" />
+    <Compile Include="App\Controllers\ServicesController.cs" />
     <Compile Include="App\Controllers\ProjectsController.cs" />
     <Compile Include="App\Controllers\HomeController.cs" />
     <Compile Include="App\Controllers\GreetingController.cs" />
@@ -116,6 +117,7 @@
     <Content Include="App\Views\Contact\Index.aspx" />
     <Content Include="App\Views\Projects\Index.aspx" />
     <Content Include="App\Views\Resume\Index.aspx" />
+    <Content Include="App\Views\Services\Index.aspx" />
     <Content Include="App\Views\Shared\_ContactBlock.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
