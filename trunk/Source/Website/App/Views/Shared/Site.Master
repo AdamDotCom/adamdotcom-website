@@ -58,6 +58,7 @@
             <li><a href="/contact-me/">Contact</a></li>
             <li><a href="/book-reviews/">Reviews</a></li>
             <li><a href="/reading-lists/recommended-and-wishlist/">Reading Lists</a></li>
+            <li><a href="/publicly-available-web-services/">Web Services</a></li>
           </ul>
           <div id="searchbox">			
             <form action="/journal/" method="get">
