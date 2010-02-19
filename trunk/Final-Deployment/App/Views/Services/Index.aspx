@@ -106,7 +106,7 @@
           </ul>
           Example: 
           <ul>
-            <a href="http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp={callback}</a>
+            <a href="http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp=callback</a>
           </ul>
         </li>
       </ul>
