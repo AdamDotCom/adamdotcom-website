@@ -71,6 +71,8 @@
           Example:
           <ul>
             <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.xml">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.xml</a></li>
+            <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json</a></li>
+            <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?jsonp=callback</a></li>
           </ul>            
         </li>
         <li>Review retrieval URI by Amazon customer ID: 
@@ -127,11 +129,11 @@
         </li>	
         <li>Multiple project host retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects.{json|html|xml}?project-host:username={project-host1:username1,project-host2:username2,...}[&amp;jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects.{json|xml}?project-host:username={project-host1:username1,project-host2:username2,...}[&amp;jsonp={callback}]</span></li>
           </ul>
           Examples:
           <ul>
-            <li><a href="http://adam.kahtava.com/services/open-source/projects.html?project-host:username=github:adamdotcom,googlecode:adam.kahtava.com">http://adam.kahtava.com/services/open-source/projects.html?project-host:username=github:adamdotcom,googlecode:adam.kahtava.com</a></li>
+            <li><a href="http://adam.kahtava.com/services/open-source/projects.json?project-host:username=github:adamdotcom,googlecode:adam.kahtava.com">http://adam.kahtava.com/services/open-source/projects.json?project-host:username=github:adamdotcom,googlecode:adam.kahtava.com</a></li>
             <li><a href="http://adam.kahtava.com/services/open-source/projects.xml?project-host:username=googlecode:adam.kahtava.com">http://adam.kahtava.com/services/open-source/projects.xml?project-host:username=googlecode:adam.kahtava.com</a></li>
           </ul>
         </li>
