@@ -66,18 +66,18 @@
       <ul>
         <li>User profile discovery URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/amazon/discover/user/{firstname-lastname}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/amazon/discover/user/{firstname-lastname}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example:
           <ul>
             <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.xml">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.xml</a></li>
             <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json</a></li>
-            <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?jsonp=callback</a></li>
+            <li><a href="http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?callback=callback">http://adam.kahtava.com/services/amazon/discover/user/adam-kahtava.json?callback=callback</a></li>
           </ul>            
         </li>
         <li>Review retrieval URI by Amazon customer ID: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/amazon/reviews/id/{customer-id}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/amazon/reviews/id/{customer-id}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example:
           <ul>
@@ -86,16 +86,16 @@
         </li>
         <li>Review retrieval URI by Amazon user's firstname lastname combination: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/amazon/reviews/user/{firstname-lastname}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/amazon/reviews/user/{firstname-lastname}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example:
           <ul>
-            <li><a href="http://adam.kahtava.com/services/amazon/reviews/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/reviews/user/adam-kahtava.json?jsonp=callback</a></li>
+            <li><a href="http://adam.kahtava.com/services/amazon/reviews/user/adam-kahtava.json?callback=callback">http://adam.kahtava.com/services/amazon/reviews/user/adam-kahtava.json?callback=callback</a></li>
           </ul>             
         </li>
         <li>Whishlist retrieval URI by Amazon wishlist ID: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/amazon/wishlist/id/{list-id}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/amazon/wishlist/id/{list-id}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example:
           <ul>
@@ -104,11 +104,11 @@
         </li>
         <li>Wishlist retrieval URI by Amazon user's firstname lastname combination: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/amazon/wishlist/user/{firstname-lastname}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/amazon/wishlist/user/{firstname-lastname}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example: 
           <ul>
-            <a href="http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?jsonp=callback</a>
+            <a href="http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?callback=callback">http://adam.kahtava.com/services/amazon/wishlist/user/adam-kahtava.json?callback=callback</a>
           </ul>
         </li>
       </ul>
@@ -119,17 +119,17 @@
       <ul>
         <li>Single project host retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects/{project-host}.{json|xml}?user={username}[&amp;jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects/{project-host}.{json|xml}?user={username}[&amp;callback={callback}]</span></li>
           </ul>  
           Examples: 
           <ul>
             <li><a href="http://adam.kahtava.com/services/open-source/projects/github.xml?user=adamdotcom">http://adam.kahtava.com/services/open-source/projects/github.xml?user=adamdotcom</a></li>
-            <li><a href="http://adam.kahtava.com/services/open-source/projects/googlecode.json?user=adam.kahtava.com&jsonp=callback">http://adam.kahtava.com/services/open-source/projects/googlecode.json?user=adam.kahtava.com&amp;jsonp=callback</a></li>
+            <li><a href="http://adam.kahtava.com/services/open-source/projects/googlecode.json?user=adam.kahtava.com&callback=callback">http://adam.kahtava.com/services/open-source/projects/googlecode.json?user=adam.kahtava.com&amp;callback=callback</a></li>
           </ul>
         </li>	
         <li>Multiple project host retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects.{json|xml}?project-host:username={project-host1:username1,project-host2:username2,...}[&amp;jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/open-source/projects.{json|xml}?project-host:username={project-host1:username1,project-host2:username2,...}[&amp;callback={callback}]</span></li>
           </ul>
           Examples:
           <ul>
@@ -145,11 +145,11 @@
       <ul>
         <li>Resume retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/resume/linkedIn/{firstname-lastname}.{json|xml}[?jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/resume/linkedIn/{firstname-lastname}.{json|xml}[?callback={callback}]</span></li>
           </ul>
           Example: 
           <ul>
-            <li><a href="http://adam.kahtava.com/services/resume/linkedin/adam-kahtava.json?jsonp=callback">http://adam.kahtava.com/services/resume/linkedin/adam-kahtava.json?jsonp=callback</a></li>
+            <li><a href="http://adam.kahtava.com/services/resume/linkedin/adam-kahtava.json?callback=callback">http://adam.kahtava.com/services/resume/linkedin/adam-kahtava.json?callback=callback</a></li>
           </ul>
         </li>
       </ul>
@@ -160,18 +160,18 @@
       <ul>
         <li>Normal Whois retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/whois.{json|xml}[?query={ip-address}][&amp;jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/whois.{json|xml}[?query={ip-address}][&amp;callback={callback}]</span></li>
           </ul>
           Examples:
           <ul>
             <li><a href="http://adam.kahtava.com/services/whois.xml?query=68.140.1.1">http://adam.kahtava.com/services/whois.xml?query=68.140.1.1</a></li>
             <li><a href="http://adam.kahtava.com/services/whois.xml">http://adam.kahtava.com/services/whois.xml</a></li>
-            <li><a href="http://adam.kahtava.com/services/whois.json?jsonp=callback">http://adam.kahtava.com/services/whois.json?jsonp=callback</a></li>
+            <li><a href="http://adam.kahtava.com/services/whois.json?callback=callback">http://adam.kahtava.com/services/whois.json?callback=callback</a></li>
           </ul>
         </li>
         <li>Enhanced Whois retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/whois/enhanced.{json|xml}?query={ip-address}&amp;filters={filter1,filter2,...}&amp;referrer={referrer}[&amp;jsonp={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/whois/enhanced.{json|xml}?query={ip-address}&amp;filters={filter1,filter2,...}&amp;referrer={referrer}[&amp;callback={callback}]</span></li>
           </ul>
           Examples:
           <ul>
