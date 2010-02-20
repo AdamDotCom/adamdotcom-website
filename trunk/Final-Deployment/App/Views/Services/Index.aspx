@@ -173,7 +173,7 @@
           <ul>
             <li><span class="uri">http://adam.kahtava.com/services/whois/enhanced.{json|xml}?query={ip-address}&amp;filters={filter1,filter2,...}&amp;referrer={referrer}[&amp;callback={callback}]</span></li>
           </ul>
-          Examples:
+          Example:
           <ul>
             <li><a href="http://adam.kahtava.com/services/whois/enhanced.xml?query=74.125.127.99&filters=Calgary&referrer=Twitter">http://adam.kahtava.com/services/whois/enhanced.xml?query=74.125.127.99&amp;filters=Calgary&amp;referrer=Twitter</a></li>
           </ul>              
