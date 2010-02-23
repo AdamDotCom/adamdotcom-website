@@ -22,7 +22,7 @@ namespace AdamDotCom.Website.App.Controllers
                 projectHostUsernamePairs += BuildProjectHostUsernamePair(ProjectHost.GoogleCode, googleCodeId);
             }
             
-            ViewData.Add(new ProjectsService().Find(projectHostUsernamePairs).RemoveOldDuplicates().Enhance());
+            ViewData.Add(new ProjectsService().Find(projectHostUsernamePairs).Enhance());
 
             return View();
         }
