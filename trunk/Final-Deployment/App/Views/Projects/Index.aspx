@@ -86,39 +86,40 @@
     font-weight: normal;
   }
 </style>
+
 <script type="text/javascript">
-    $(document).ready(function () {
-        var projectsBadge = $('#project-badge');
+  $(document).ready(function () {
+    var projectsBadge = $('#project-badge');
 
-        // mouse behaviours    
-        var projectsList = projectsBadge.find('ul');
-        var projects = projectsList.find('li');
+    // mouse behaviours    
+    var projectsList = projectsBadge.find('ul');
+    var projects = projectsList.find('li');
 
-        projects.bind('mouseenter', function() {
-            projects.removeClass('entered');
-            $(this).addClass('entered');
-            projectsList.addClass("entered");
-        });
-
-        projects.bind('mouseleave', function() {
-            projects.removeClass('entered');
-            projectsList.removeClass("entered");
-        });
+    projects.bind('mouseenter', function() {
+        projects.removeClass('entered');
+        $(this).addClass('entered');
+        projectsList.addClass("entered");
     });
+
+    projects.bind('mouseleave', function() {
+        projects.removeClass('entered');
+        projectsList.removeClass("entered");
+    });
+  });
 </script>
 
 <div id="project-badge">
-    <ul>
-      <% var projects = ViewData.Get<Projects>();
-         for ( var i = 0; i < projects.Count ; i++ ) { %>
-        <li class="<%= ((projects[i].Url.IndexOf("github") != -1) ? "github" : "google-code") %><%= (i % 2 == 1 ? " even" : "") %>">
-          <a href="<%= projects[i].Url %>"><%= projects[i].Name %></a>
-          <div class="extended">
-            <span class="description"><%= projects[i].Description %></span>
-            <span class="last-commit">Last commit: <%= projects[i].LastMessage %> <em>- <%= projects[i].LastModified %></em></span>
-          </div>
-        </li>
-      <% } %>
-    </ul>
-    <span class="credits"><a href="http://github.com/AdamDotCom/project-badge">Project badge</a> by <a href="http://AdamDotCom.com">AdamDotCom</a></span>
+  <ul>
+    <% var projects = ViewData.Get<Projects>();
+       for ( var i = 0; i < projects.Count ; i++ ) { %>
+      <li class="<%= ((projects[i].Url.IndexOf("github") != -1) ? "github" : "google-code") %><%= (i % 2 == 1 ? " even" : "") %>">
+        <a href="<%= projects[i].Url %>"><%= projects[i].Name %></a>
+        <div class="extended">
+          <span class="description"><%= projects[i].Description %></span>
+          <span class="last-commit">Last commit: <%= projects[i].LastMessage %> <em>- <%= projects[i].LastModified %></em></span>
+        </div>
+      </li>
+    <% } %>
+  </ul>
+  <span class="credits"><a href="http://github.com/AdamDotCom/project-badge">Project badge</a> by <a href="http://AdamDotCom.com">AdamDotCom</a></span>
 </div>
