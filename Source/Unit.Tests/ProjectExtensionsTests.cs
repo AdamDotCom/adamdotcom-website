@@ -17,21 +17,6 @@ namespace Unit.Tests
         }
 
         [Test]
-        public void ShouldVerifyRemoveOldDuplicates()
-        {
-            var projects = new Projects
-                               {
-                                   new Project {Name = "scripts", LastModified = DateTime.Now.AddDays(-1).ToString()},
-                                   new Project {Name = "adamdotcom-script", LastModified = DateTime.Now.ToString()}
-                               };
-
-            var results = projects.RemoveOldDuplicates();
-
-            Assert.AreEqual(1, results.Count);
-            Assert.AreEqual("adamdotcom-script", results[0].Name);
-        }
-
-        [Test]
         public void ShouldVerifyEnhance()
         {
             var projects = new Projects

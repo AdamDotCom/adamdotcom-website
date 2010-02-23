@@ -5,36 +5,6 @@ namespace AdamDotCom.Website.App.Extensions
 {
     public static class ProjectsExtensions
     {
-        // In some cases I have a repo on GitHub and GoogleCode, so...
-        //  filter out the oldest duplicate repo
-        //  GitHub let's you associate projects to users, but GoogleCode requires unique project names, so...
-        //  remove the unique prefix for comparison
-        public static Projects RemoveOldDuplicates(this Projects projects)
-        {
-            if (projects == null || projects.Count == 0)
-            {
-                return null;
-            }
-
-            var orderedProjects = projects.Clean().OrderBy(p => p.Name).ThenByDescending(p => p.LastModified).ToList();
-            var projectsToReturn = new Projects();
-
-            var lastProjectName = string.Empty;
-            for (var i = 0; i < orderedProjects.Count; i++)
-            {
-                var thisProjectName = orderedProjects[i].Name.RemoveTrailingCharacter("s").Remove("adamdotcom-");   
-
-                if(lastProjectName != thisProjectName)
-                {
-                    projectsToReturn.Add(orderedProjects[i]);
-                }
-
-                lastProjectName = thisProjectName;
-            }
-
-            return projectsToReturn;
-        }
-
         public static Projects Enhance(this Projects projects)
         {
             if (projects == null)
@@ -57,7 +27,6 @@ namespace AdamDotCom.Website.App.Extensions
 
         public static Project Clean(this Project project)
         {
-            project.Name = project.Name.Remove("adamdotcom-");
             if (project.Name == "script")
             {
                 project.Name = "scripts";
@@ -82,13 +51,19 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "website" && project.Url.Contains("code.google"))
             {
-                project.Description = "The source code for this very sentence! As well as the source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
+                project.Description = "The source code for this entire website! As well as the source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
             }
 
             if (project.Name == "amazon")
             {
                 project.Description = "An Amazon Web Services (AWS) client. This is the basis of my Amazon service. Learn more about this topic <a href='http://adam.kahtava.com/journal/category/amazon/'>here</a>";
             }
+
+            if (project.Name == "project badge")
+            {
+                project.Description += " The source code for this very widget you're hovering your mouse over";
+            }
+
 
             project.Name = project.Name.Replace("-", " ").Capitalize();
 
