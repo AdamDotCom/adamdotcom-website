@@ -11,7 +11,6 @@
     font-size: 14px;
     width: 230px;
     font-family: helvetica,arial,freesans,clean,sans-serif;
-    background-color: #FFF;
   }
   #project-badge a {
     font-weight: bold;

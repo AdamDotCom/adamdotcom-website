@@ -61,7 +61,7 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "project badge")
             {
-                project.Description += " The source code for this very widget you're hovering your mouse over";
+                project.Description += " This is actually the source code for this widget. Be sure to view both the widget <a href='http://github.com/AdamDotCom/project-badge'>source code</a> and the service <a href='http://code.google.com/p/adamdotcom-services/source/browse/trunk#trunk/AdamDotCom.OpenSource.Service'>source code</a>";
             }
 
 
