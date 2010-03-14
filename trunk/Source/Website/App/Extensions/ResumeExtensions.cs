@@ -23,9 +23,10 @@
                     if (position != null && position.Company != null)
                     {
                         position.Company = position.Company.Replace("Corbis", string.Format("Corbis / Veer {0}", EnrichedMarkup("Veer.com, Veer Marketplace, Calgary, Alberta, Canada")));
-                        position.Company = position.Company.Replace("Critical Mass", string.Format("Critical Mass {0}", EnrichedMarkup("Hyatt, Calgary, Alberta, Canada")));                      
+                        position.Company = position.Company.Replace("Critical Mass", string.Format("Critical Mass {0}", EnrichedMarkup("Hyatt, Calgary, Alberta, Canada")));
+                        position.Company = position.Company.Replace("RazorEdge", string.Format("RazorEdge {0}", EnrichedMarkup("Agilent, Agilent Technologies, Commerce Server, Ecommerce, E-commerce, Share Point, Sharepoint")));
                         position.Company = position.Company.Replace("Allstream", string.Format("MTS Allstream {0}", EnrichedMarkup("CAAF: City of Calgary Application Architecture Framework, Calgary, Alberta, Canada")));
-                        position.Company = position.Company.Replace("Cactus Commerce", string.Format("Cactus Commerce {0}", EnrichedMarkup("Ottawa, Ontario, Gatineau, Quebec, GameStop, Folica, Ecommerce, E-commerce, B2B, B2C, C2C, Biztalk, Commerce Server")));
+                        position.Company = position.Company.Replace("Cactus Commerce", string.Format("Cactus Commerce {0}", EnrichedMarkup("Ottawa, Ontario, Gatineau, Quebec, GameStop, Folica, Hanes, Ecommerce, E-commerce, B2B, B2C, C2C, Biztalk, Commerce Server")));
                         position.Company = position.Company.Replace("Mercurial Communications", string.Format("Mercurial Communications {0}", EnrichedMarkup("Netscape 8.0 Browser, Tempus Microsystems, Victoria, British Columbia, Canada")));
                     }
                     if (position != null && position.Description != null)

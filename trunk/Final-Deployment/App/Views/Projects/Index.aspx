@@ -7,6 +7,9 @@
   #northsidebar .widget > div#project-badge {
   	padding-left: 35px;
   }
+  #sidebar #project-badge li {
+  	margin-top: 0px;
+  }
   #project-badge {
     font-size: 14px;
     width: 230px;
