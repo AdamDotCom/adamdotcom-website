@@ -51,7 +51,7 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "website" && project.Url.Contains("code.google"))
             {
-                project.Description = "The source code for this entire website! As well as the source for this page, and the source for this entire site. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
+                project.Description = "The source code for this entire website and this very sentence. Read more about how this site is constructed <a href='http://adam.kahtava.com/journal/category/open-source/adc-website/'>here</a>";
             }
 
             if (project.Name == "amazon")
@@ -61,9 +61,13 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "project badge")
             {
-                project.Description += " This is actually the source code for this widget. Be sure to view both the widget <a href='http://github.com/AdamDotCom/project-badge'>source code</a> and the service <a href='http://code.google.com/p/adamdotcom-services/source/browse/trunk#trunk/AdamDotCom.OpenSource.Service'>source code</a>";
+                project.Description += " This is actually the source code for this widget your mouse is hovering over. Be sure to view both the widget <a href='http://github.com/AdamDotCom/project-badge'>source code</a> and the service <a href='http://code.google.com/p/adamdotcom-services/source/browse/trunk#trunk/AdamDotCom.OpenSource.Service'>source code</a>";
             }
 
+            if (project.Name == "memcached on powershell")
+            {
+                project.Description = "A Memcached client written in PowerShell. Read more about this on my blog <a href='http://adam.kahtava.com/journal/2010/03/09/memcached-on-powershell/'>here</a>";
+            }
 
             project.Name = project.Name.Replace("-", " ").Capitalize();
 
