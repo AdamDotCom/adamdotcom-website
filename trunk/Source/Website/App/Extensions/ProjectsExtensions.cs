@@ -39,7 +39,7 @@ namespace AdamDotCom.Website.App.Extensions
         //  re-word descriptions from the context of my site
         public static Project Enhance(this Project project)
         {
-            if (project.Name == "scripts")
+            if (project.Name == "scripts" || project.Name == "script")
             {
                 project.Description = "Scripts that I use on a daily basis. You'll find JavaScript, Ruby, and PowerShell here. You may be interested in learning more about my PoweShell work <a href='http://adam.kahtava.com/journal/category/powershell/'>here</a>";
             }
@@ -61,7 +61,7 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "project badge")
             {
-                project.Description += " This is actually the source code for this widget your mouse is hovering over. Be sure to view both the widget <a href='http://github.com/AdamDotCom/project-badge'>source code</a> and the service <a href='http://code.google.com/p/adamdotcom-services/source/browse/trunk#trunk/AdamDotCom.OpenSource.Service'>source code</a>";
+                project.Description += " This is actually the source code for this widget your mouse is hovering over. Be sure to view the widget <a href='http://github.com/AdamDotCom/project-badge'>source code</a>, the service <a href='http://code.google.com/p/adamdotcom-services/source/browse/trunk#trunk/AdamDotCom.OpenSource.Service'>source code</a>, and the <a href='http://adam.kahtava.com/journal/2010/02/24/the-project-badge-show-the-world-your-github-and-google-code-projects-on-your-blog/'>blog post</a> that ties everything together";
             }
 
             if (project.Name == "memcached on powershell")

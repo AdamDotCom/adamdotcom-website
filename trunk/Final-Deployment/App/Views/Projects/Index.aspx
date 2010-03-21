@@ -27,7 +27,7 @@
   #project-badge li{
     padding-left: 24px;
     list-style-type: none;
-    border: 1px solid #FFF;
+    border: 1px solid transparent;
     border-bottom: 1px solid #e5e5e5;
     display: block;
     line-height: 27px;

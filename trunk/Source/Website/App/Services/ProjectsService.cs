@@ -7,7 +7,7 @@ namespace AdamDotCom.Website.App.Services
     {
         protected override Projects GetFromService(string id)
         {
-            return new Projects(new OpenSourceService().GetProjectsByProjectHostAndUsernameXml(id, "remove:adamdotcom,remove:duplicate-items,remove:-"));
+            return new Projects(new OpenSourceService().GetProjectsByProjectHostAndUsernameXml(id, "remove:adamdotcom,duplicate-items,-,empty-items"));
         }
     }
 }
