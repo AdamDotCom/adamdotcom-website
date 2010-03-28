@@ -22,7 +22,7 @@ namespace Unit.Tests
         }
 
         [Test]
-        public void ShouldVerigy_HtmlStripper()
+        public void ShouldVerify_HtmlStripperWithLinks()
         {
             var messageBody =
                 new MailerMessage
@@ -36,6 +36,22 @@ namespace Unit.Tests
             Assert.IsFalse(messageBody.Contains("<br>"));
             Assert.IsTrue(messageBody.Contains("http://www.google.com"));
             Assert.IsTrue(messageBody.Contains("http://www.yahoo.com"));
+        }
+
+        [Test]
+        public void ShouldVerify_HtmlStripperOnHappyDays()
+        {
+            var messageBody = new MailerMessage { Body = @"hello" }.Body;
+
+            Assert.IsTrue(messageBody.Contains("hello"));
+        }
+
+        [Test]
+        public void ShouldVerify_HtmlStripperOnWeirdInput()
+        {
+            var messageBody = new MailerMessage { Body = @"-url- -url- <a href='dude'>hi</a> <a href='"" -url-</a> -url-" }.Body;
+
+            Console.WriteLine(messageBody);
         }
     }
 }

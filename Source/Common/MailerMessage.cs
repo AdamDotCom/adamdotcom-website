@@ -43,11 +43,11 @@ namespace AdamDotCom.Common.Website
 
             var urls = new List<string>();
             var match = new Regex(@"href=([""']+)(?<Url>(([^""'])+))").Match(htmlText);
-            do
+            while(match.Success)
             {
                 urls.Add(match.Groups["Url"].Captures[0].Value);
                 match = match.NextMatch();
-            } while (match.Success);
+            }
 
             var urlPlaceholder = "-url-";
             htmlText = Regex.Replace(htmlText, @"<a.*?>", urlPlaceholder);
