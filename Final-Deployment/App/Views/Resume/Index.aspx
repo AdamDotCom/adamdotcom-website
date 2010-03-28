@@ -79,7 +79,7 @@
     <h3>Education</h3>
     <ul class="education">
   <%  foreach (Education item in ViewData.Get<Resume>().Educations) {%>
-      <li><strong><%= item.Certificate %></strong>, <%= item.Institute %></li>
+      <li><strong><%= item.Certificate %></strong>, <%= item.Period %>, <%= item.Institute %></li>
   <%  } %>
     </ul>
   </div>
