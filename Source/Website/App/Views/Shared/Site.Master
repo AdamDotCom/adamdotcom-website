@@ -6,6 +6,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
   <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all posts" href="http://feeds2.feedburner.com/Adam-Kahtava/AdamDotCom" /> 
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all comments" href="http://feeds.feedburner.com/Comments-For-Adam-Kahtava/AdamDotCom" />
   <link rel="stylesheet" type="text/css" href="http://adam.kahtava.com/journal/wp-content/themes/inove/style.css" media="all" />
   <style type="text/css">
     #northsidebar .widget > div {

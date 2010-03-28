@@ -60,7 +60,7 @@ namespace AdamDotCom.Website.App.Controllers
             if(!mailerMessage.IsValid())
             {
                 HttpContext.Response.StatusCode = (int) HttpStatusCode.NotAcceptable;
-                return Content("The <span>email</span> and <span>message</span> ensure those fields are correct. Then try, try, try again.");
+                return Content("Your <span>email</span> and <span>message</span> are required, ensure those fields are correct. Then try, try, try again.");
             }
 
             mailerMessage.AppendWhois(whoisService, HttpContext.Request.UserHostAddress);
@@ -75,7 +75,7 @@ namespace AdamDotCom.Website.App.Controllers
             if(mailer.Errors.Count != 0)
             {
                 HttpContext.Response.StatusCode = (int) HttpStatusCode.BadRequest;
-                return Content("The server gremlins are at it again! they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> don't contain any weird characters. Thanks!");
+                return Content("The server gremlins are at it again! they marked your message as spam. Check that your <span>email</span> is valid and that the <span>message</span> doesn't contain any weird characters. Thanks!");
             }
 
             HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;

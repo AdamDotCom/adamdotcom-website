@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace AdamDotCom.Common.Website
 {
@@ -39,7 +40,31 @@ namespace AdamDotCom.Common.Website
             }
             htmlText = htmlText.Replace("<br>", "\n");
             htmlText = htmlText.Replace("&nbsp;", " ");
+
+            var urls = new List<string>();
+            var match = new Regex(@"href=([""']+)(?<Url>(([^""'])+))").Match(htmlText);
+            do
+            {
+                urls.Add(match.Groups["Url"].Captures[0].Value);
+                match = match.NextMatch();
+            } while (match.Success);
+
+            var urlPlaceholder = "-url-";
+            htmlText = Regex.Replace(htmlText, @"<a.*?>", urlPlaceholder);
             htmlText = Regex.Replace(htmlText, @"<.*?>", string.Empty);
+
+            int location = 0;
+            foreach (var url in urls)
+            {   
+                location = htmlText.IndexOf(urlPlaceholder, location + urlPlaceholder.Length);
+                if(location == -1)
+                {
+                    break;
+                }
+                htmlText = htmlText.Remove(location, urlPlaceholder.Length);
+                htmlText = htmlText.Insert(location, string.Format(" ({0}) ", url));
+            }
+
             return htmlText;
         }
     }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AdamDotCom.Website.App.Controllers;
-using AdamDotCom.Website.App.Models;
 using AdamDotCom.Whois.Service.Proxy;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -19,7 +18,7 @@ namespace Unit.Tests.Controllers
             var mocks = new MockRepository();
 
             var service = mocks.StrictMock<IWhois>();
-            var context = mocks.FakeHttpContext("http://www.sanity-check-fullstop-This-could-be-any-url.com");
+            var context = mocks.FakeHttpContext("http://www.sanity-check-fullstop-this-could-be-any-url.com");
 
             Expect.Call(service.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(new WhoisEnhancedRecord());
             

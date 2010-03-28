@@ -85,6 +85,7 @@
     <Compile Include="Controllers\GreetingMockHelper.cs" />
     <Compile Include="GreetingExtensionsTests.cs" />
     <Compile Include="LocalDataExtensionsTests.cs" />
+    <Compile Include="MailerMessageTests.cs" />
     <Compile Include="ProjectExtensionsTests.cs" />
     <Compile Include="RepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
