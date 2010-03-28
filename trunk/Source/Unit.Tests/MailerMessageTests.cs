@@ -39,6 +39,24 @@ namespace Unit.Tests
         }
 
         [Test]
+        public void ShouldVerify_HtmlStripperMoreComplexLinks()
+        {
+            string messageBody =
+                new MailerMessage
+                    {
+                        Body =
+                            @"<a href=""http://www.yahoo.com"">yahoo</a>, visit <a href=""http://www.bing.com"">bing</a>, visit <a href=""http://www.google.com"">google</a>, or check out <a href=""http://www.veer.com"">veer. also look into</a>"
+                    }.Body;
+
+            Console.WriteLine(messageBody);
+
+            Assert.IsTrue(messageBody.Contains("http://www.yahoo.com"));
+            Assert.IsTrue(messageBody.Contains("http://www.bing.com"));
+            Assert.IsTrue(messageBody.Contains("http://www.google.com"));
+            Assert.IsTrue(messageBody.Contains("http://www.veer.com"));
+        }
+
+        [Test]
         public void ShouldVerify_HtmlStripperOnHappyDays()
         {
             var messageBody = new MailerMessage { Body = @"hello" }.Body;

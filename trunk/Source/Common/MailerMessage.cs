@@ -56,7 +56,7 @@ namespace AdamDotCom.Common.Website
             int location = 0;
             foreach (var url in urls)
             {   
-                location = htmlText.IndexOf(urlPlaceholder, location + urlPlaceholder.Length);
+                location = htmlText.IndexOf(urlPlaceholder, location);
                 if(location == -1)
                 {
                     break;
