@@ -4,7 +4,7 @@
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-  Resume of a Web Developer, Software Developer, and Front-end Engineeer (Curriculum Vitae, CV) &raquo; Adam.Kahtava.com / AdamDotCom
+  Resume of a Software Developer, Web Developer, and Front-end Engineeer (Curriculum Vitae, CV) &raquo; Adam.Kahtava.com / AdamDotCom
 </asp:Content>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="HeadContent" runat="server">

@@ -56,7 +56,7 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "amazon")
             {
-                project.Description = "An Amazon Web Services (AWS) client. This is the basis of my Amazon service. Learn more about this topic <a href='http://adam.kahtava.com/journal/category/amazon/'>here</a>";
+                project.Description = "An Amazon Web Services (AWS) client. This is the basis of my Amazon service (see my services repository below). Learn more about this topic <a href='http://adam.kahtava.com/journal/category/amazon/'>here</a>";
             }
 
             if (project.Name == "project badge")
@@ -66,7 +66,12 @@ namespace AdamDotCom.Website.App.Extensions
 
             if (project.Name == "memcached on powershell")
             {
-                project.Description = "A Memcached client written in PowerShell. Read more about this on my blog <a href='http://adam.kahtava.com/journal/2010/03/09/memcached-on-powershell/'>here</a>";
+                project.Description = "A Memcached client written in PowerShell. Read more about this in my blog <a href='http://adam.kahtava.com/journal/2010/03/09/memcached-on-powershell/'>here</a>";
+            }
+
+            if (project.Name == "twitter on powershell")
+            {
+                project.Description = "A Twitter client written in PowerShell. See more about this <a href='http://adam.kahtava.com/journal/2008/12/05/twitter-on-powershell/'>here</a> (in my blog)";
             }
 
             project.Name = project.Name.Replace("-", " ").Capitalize();
