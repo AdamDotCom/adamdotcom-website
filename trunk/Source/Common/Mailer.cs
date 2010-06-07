@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace AdamDotCom.Common.Website
 {
-    public class Mailer
+    public class Mailer : IMailer
     {
         private readonly string smtpServerName;
 
@@ -16,7 +16,7 @@ namespace AdamDotCom.Common.Website
         }
 
         //ToDo: extend errors into errorcodes based on enums
-        public List<string> Errors;
+        public List<string> Errors { get; set; }
 
         public bool Send(MailerMessage mailerMessage)
         {

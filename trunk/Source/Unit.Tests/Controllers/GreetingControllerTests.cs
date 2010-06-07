@@ -13,31 +13,38 @@ namespace Unit.Tests.Controllers
     public class GreetingControllerTests
     {
         [Test]
-        public void ShouldVerifyLoadFromService()
+        public void ShouldVerify_Index_GoogleFriendly()
         {
             var mocks = new MockRepository();
 
+            var context = mocks.MockedContext("http://www.google.com");
+            
             var service = mocks.StrictMock<IWhois>();
-            var context = mocks.FakeHttpContext("http://www.sanity-check-fullstop-this-could-be-any-url.com");
-
-            Expect.Call(service.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(new WhoisEnhancedRecord());
+            Expect.Call(service.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(new WhoisEnhancedRecord
+                                                                                                 {
+                                                                                                     IsFriendly = true,
+                                                                                                     FriendlyMatches = new List<string> {"google"}
+                                                                                                 });
             
             mocks.ReplayAll();
             
             var controller = new GreetingController(service);
             controller.ControllerContext = new ControllerContext(context, new RouteData(),  controller);
-            controller.Index();
+            var result = controller.Index() as ContentResult;
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull((result.Content.Contains("Google")));
 
             mocks.VerifyAll();
         }
 
         [Test]
-        public void ShouldVerifyLoadFromService_IsFriendly()
+        public void ShouldVerify_Index_TwitterReferrer()
         {
             var mocks = new MockRepository();
 
             var service = mocks.StrictMock<IWhois>();
-            var context = mocks.FakeHttpContext("http://www.twitter.com");
+            var context = mocks.MockedContext("http://www.twitter.com");
 
             Expect.Call(service.WhoisEnhancedXml(null, null, null)).IgnoreArguments().Return(new WhoisEnhancedRecord
                                                                                                  {
@@ -49,22 +56,16 @@ namespace Unit.Tests.Controllers
 
             var controller = new GreetingController(service);
             controller.ControllerContext = new ControllerContext(context, new RouteData(), controller);
-            var result = controller.Index();
-
-            mocks.VerifyAll();
+            var result = controller.Index() as ContentResult;
 
             Assert.IsNotNull(result);
-//            Assert.IsNotNull(result.Data);
-//
-//            var greeting = ((Greeting) result.Data);
-//
-//            Assert.IsFalse(string.IsNullOrEmpty(greeting.Message));
-//
-//            Console.Write(greeting.Message);
+            Assert.IsTrue(result.Content.Contains("Twitter"));
+
+            mocks.VerifyAll();
         }
 
         [Test, ExpectedException(typeof(NullReferenceException))]
-        public void ShouldVerifyWhenThingsGoBad()
+        public void ShouldVerify_Index_WhoisFail()
         {
             var service = MockRepository.GenerateStub<IWhois>();
 

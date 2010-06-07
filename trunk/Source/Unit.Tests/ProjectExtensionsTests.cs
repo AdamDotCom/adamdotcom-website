@@ -9,7 +9,7 @@ namespace Unit.Tests
     public class ProjectExtensionsTests
     {
         [Test]
-        public void ShouldVerifyRemoveTrailingCharacter()
+        public void ShouldVerify_RemoveTrailingCharacter()
         {
             var wordWithTrailingS = "scripts";
 
@@ -17,16 +17,16 @@ namespace Unit.Tests
         }
 
         [Test]
-        public void ShouldVerifyEnhance()
+        public void ShouldVerify_CleanAndEnhance()
         {
             var projects = new Projects
                                {
-                                   new Project {Name = "adamdotcom-script", LastModified = DateTime.Now.ToString()}
+                                   new Project {Name = "script", Url = string.Empty, LastModified = DateTime.Now.ToString()}
                                };
 
-            var results = projects.Enhance();
+            var results = projects.Clean().Enhance();
 
-            Assert.AreEqual("scripts", results[0].Name);
+            Assert.AreEqual("Scripts", results[0].Name);
             Assert.IsFalse(string.IsNullOrEmpty(results[0].Description));
         }
 

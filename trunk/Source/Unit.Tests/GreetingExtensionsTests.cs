@@ -77,11 +77,5 @@ namespace Unit.Tests
             Assert.IsTrue("i like cake".Capitalize().Contains("I Like Cake"));
             Assert.IsTrue("I like cake".Capitalize().Contains("I Like Cake"));
         }
-
-        [Test]
-        public void ShouldDisplayAllMessagesSoICanLookForMistakesInGrammer()
-        {
-            Assert.Fail();
-        }
     }
 }
