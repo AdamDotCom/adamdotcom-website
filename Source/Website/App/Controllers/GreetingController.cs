@@ -29,10 +29,10 @@ namespace AdamDotCom.Website.App.Controllers
 
                 var whois = whoisService.WhoisEnhancedXml(ipAddress, "Canada,Calgary,Alberta", referrer);
 
-                return Content(new Greeting().Translate(whois).ToString());
+                return Content(new Greeting().Translate(whois).Message);
             }
 
-            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            Response.StatusCode = (int) HttpStatusCode.BadRequest;
             return null;
         }
     }

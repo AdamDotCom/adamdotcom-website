@@ -9,6 +9,15 @@ namespace AdamDotCom.Website.App.Controllers
     [HandleError]
     public class ProjectsController : Controller
     {
+        private IService<Projects> projectsService;
+
+        public ProjectsController() : this(new ProjectsService()) {}
+
+        public ProjectsController(IService<Projects> projectsService)
+        {
+            this.projectsService = projectsService;
+        }
+
         [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Index(string gitHubId, string googleCodeId)
         {
@@ -22,7 +31,7 @@ namespace AdamDotCom.Website.App.Controllers
                 projectHostUsernamePairs += BuildProjectHostUsernamePair(ProjectHost.GoogleCode, googleCodeId);
             }
             
-            ViewData.Add(new ProjectsService().Find(projectHostUsernamePairs).Clean().Enhance());
+            ViewData.Add(projectsService.Find(projectHostUsernamePairs).Clean().Enhance());
 
             return View();
         }

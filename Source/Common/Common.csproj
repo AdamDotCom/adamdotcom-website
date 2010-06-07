@@ -59,6 +59,8 @@
     <Compile Include="AsynchronousBroker.cs" />
     <Compile Include="CachedService.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="IMailer.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="LocalDataExtensions.cs" />
     <Compile Include="MailerMessage.cs" />

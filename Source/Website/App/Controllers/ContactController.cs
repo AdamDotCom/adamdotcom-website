@@ -11,12 +11,14 @@ namespace AdamDotCom.Website.App.Controllers
     public class ContactController : Controller
     {
         private readonly IWhois whoisService;
+        private readonly IMailer mailer;
 
-        public ContactController() : this(new WhoisService()) {}
+        public ContactController() : this(new WhoisService(), new Mailer()) {}
 
-        public ContactController(IWhois whoisService)
+        public ContactController(IWhois whoisService, IMailer mailer)
         {
             this.whoisService = whoisService;
+            this.mailer = mailer;
         }
 
         public ActionResult Thanks()
@@ -65,8 +67,6 @@ namespace AdamDotCom.Website.App.Controllers
 
             mailerMessage.AppendWhois(whoisService, HttpContext.Request.UserHostAddress);
 
-            var mailer = new Mailer();
-
             if(mailer.Send(mailerMessage))
             {
                 return RedirectToAction("Thanks");
@@ -82,4 +82,4 @@ namespace AdamDotCom.Website.App.Controllers
             return Content(string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
         }
     }
-}
+}   

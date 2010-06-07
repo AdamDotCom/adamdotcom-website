@@ -5,7 +5,7 @@ namespace AdamDotCom.Website.App.Services
 {
     using Resume = Resume.Service.Proxy.Resume;
 
-    public class ResumeService: CachedService<AdamDotCom.Resume.Service.Proxy.Resume>
+    public class ResumeService: CachedService<Resume>
     {
         protected override Resume GetFromService(string id)
         {

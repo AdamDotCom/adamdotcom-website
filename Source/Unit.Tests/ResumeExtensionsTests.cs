@@ -10,22 +10,16 @@ namespace Unit.Tests
     public class ResumeExtensionsTests
     {
         [Test]
-        public void ShouldVerifyLoadFromServiceAndSave()
-        {
-
-        }
-
-        [Test]
-        public void ShouldVerifyAcryonymHtml()
+        public void ShouldVerify_AcryonymHtml()
         {
             var result = ResumeExtensions.AcronymMarkup("CSS", "Cascading Style Sheets");
          
             Console.WriteLine(result);
-            Assert.IsTrue(result.Contains("&lt;acronym title=\"Cascading Style Sheets\"&gt;"));
+            Assert.IsTrue(result.Contains("<acronym title=\"Cascading Style Sheets\">"));
         }
 
         [Test]
-        public void ShouldVerifyAcronymEnricher()
+        public void ShouldVerify_AcronymEnricher()
         {
             var resume = new Resume {Positions = new List<Position> {new Position {Description = "CSS, IIS"}}};
             var result = resume.Enrich();

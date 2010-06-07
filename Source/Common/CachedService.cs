@@ -1,6 +1,6 @@
 ﻿namespace AdamDotCom.Common.Website
 {
-    public abstract class CachedService<T> where T : class
+    public abstract class CachedService<T> : IService<T> where T : class
     {
         private readonly IRepository repository;
         private readonly AsynchronousBroker asynchronousBroker;
