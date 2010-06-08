@@ -1,4 +1,4 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Projects>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="AdamDotCom.OpenSource.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Common.Website"%>

@@ -88,6 +88,7 @@
     <Compile Include="App\Extensions\MailerExtensions.cs" />
     <Compile Include="App\Extensions\GreetingExtensions.cs" />
     <Compile Include="App\Extensions\ProjectsExtensions.cs" />
+    <Compile Include="App\Models\ReadingLists.cs" />
     <Compile Include="App\MyWebPresence.cs" />
     <Compile Include="App\Extensions\ResumeExtensions.cs">
       <SubType>Code</SubType>

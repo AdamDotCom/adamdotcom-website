@@ -31,9 +31,7 @@ namespace AdamDotCom.Website.App.Controllers
                 projectHostUsernamePairs += BuildProjectHostUsernamePair(ProjectHost.GoogleCode, googleCodeId);
             }
             
-            ViewData.Add(projectsService.Find(projectHostUsernamePairs).Clean().Enhance());
-
-            return View();
+            return View(projectsService.Find(projectHostUsernamePairs).Clean().Enhance());
         }
 
         private string BuildProjectHostUsernamePair(ProjectHost projectHost, string username)

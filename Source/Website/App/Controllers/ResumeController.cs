@@ -21,9 +21,7 @@ namespace AdamDotCom.Website.App.Controllers
         [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Index(string id)
         {
-            ViewData.Add(resumeService.Find(id));
-
-            return View();
+            return View(resumeService.Find(id));
         }
     }
 }

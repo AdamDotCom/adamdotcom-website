@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ReadingLists>" %>
 <%@ Import Namespace="AdamDotCom.Amazon.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
@@ -57,7 +57,7 @@
       <h2>Books I Recommend</h2>
       <ul class="book-list">
     <%  int zebra = 0;
-      foreach (Product item in ViewData.Get<HaveReadList>()) { %>
+      foreach (Product item in Model.HaveReadList) { %>
         <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><a href="<%= item.ProductPreviewUrl %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><%= item.Title %> by <%= item.AuthorsMLA %></a></li>
     <%  zebra++;
       } %>
@@ -67,7 +67,7 @@
       <h2>Books I'd Like to Read</h2>
       <ul class="book-list">
     <%  zebra = 0; 
-      foreach (Product item in ViewData.Get<ToReadList>()) { %>
+      foreach (Product item in Model.ToReadList) { %>
         <li <%= zebra % 2 == 0 ? "class=\"zebra\"" : "" %>><a href="<%= item.ProductPreviewUrl %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><%= item.Title %> by <%= item.AuthorsMLA %></a></li>  
     <%  zebra++;
       } %>

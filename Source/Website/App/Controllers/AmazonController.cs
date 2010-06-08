@@ -25,18 +25,17 @@ namespace AdamDotCom.Website.App.Controllers
         [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult Reviews(string id)
         {
-            ViewData.Add(reviewListService.Find(id));
-
-            return View();
+            return View(reviewListService.Find(id));
         }
 
         [OutputCache(Duration = 172800, VaryByParam = "None")]
         public ActionResult ReadingLists(string haveReadListId, string toReadListId)
         {
-            ViewData.Add(haveReadListService.Find(haveReadListId));
-            ViewData.Add(toReadListService.Find(toReadListId));
-
-            return View();
+            return View(new ReadingLists
+                            {
+                                HaveReadList = haveReadListService.Find(haveReadListId),
+                                ToReadList = toReadListService.Find(toReadListId)
+                            });
         }
     }
 }
