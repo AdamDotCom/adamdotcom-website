@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Reviews>" %>
 <%@ Import Namespace="AdamDotCom.Amazon.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
 
@@ -45,7 +45,7 @@
     <h2>Reviews</h2>
     <ul class="review-list">
     <% int zebra = 0;
-       foreach (Review item in ViewData.Get<Reviews>())
+       foreach (Review item in Model)
        { %>
       <li class="<%= zebra % 2 == 0 ? "" : "zebra" %>"><a href="<%= item.Url %>"><img alt="<%= item.Title %>" src="<%= item.ImageUrl %>" /><strong><%= item.Title %> by <%= item.AuthorsMLA %></strong></a> <p><%= item.Content %></p></li>
     <%  zebra++;

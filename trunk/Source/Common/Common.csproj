@@ -67,7 +67,6 @@
     <Compile Include="RouteExtensions.cs" />
     <Compile Include="Mailer.cs" />
     <Compile Include="Repository.cs" />
-    <Compile Include="ViewDataExtensions.cs" />
     <Compile Include="ViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
