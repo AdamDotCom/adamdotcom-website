@@ -30,7 +30,7 @@ namespace Unit.Tests.Controllers
             var result = controller.Reviews("some-id") as ViewResult;
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.ViewData.Keys.Contains(typeof(Reviews).FullName));
+            Assert.IsTrue(result.ViewData.Model.GetType().FullName == (typeof(Reviews).FullName));
 
             mocks.VerifyAll();
         }
@@ -55,8 +55,7 @@ namespace Unit.Tests.Controllers
             var result = controller.ReadingLists("have-read-list-id", "to-read-list-id") as ViewResult;
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.ViewData.Keys.Contains(typeof(HaveReadList).FullName));
-            Assert.IsTrue(result.ViewData.Keys.Contains(typeof(ToReadList).FullName));
+            Assert.IsTrue(result.ViewData.Model.GetType().FullName == (typeof(ReadingLists).FullName));
 
             mocks.VerifyAll();
         }

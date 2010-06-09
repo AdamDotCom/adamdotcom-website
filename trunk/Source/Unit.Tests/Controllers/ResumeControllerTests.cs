@@ -29,7 +29,7 @@ namespace Unit.Tests.Controllers
             var result = controller.Index("adam-kahtava") as ViewResult;
 
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.ViewData.Keys.Contains(typeof(Resume).FullName));
+            Assert.IsTrue(result.ViewData.Model.GetType().FullName == (typeof(Resume).FullName));
 
             mocks.VerifyAll();
         }
