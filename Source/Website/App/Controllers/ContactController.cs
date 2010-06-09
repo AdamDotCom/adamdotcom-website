@@ -53,11 +53,7 @@ namespace AdamDotCom.Website.App.Controllers
         [AcceptVerbs(HttpVerbs.Post), ValidateAntiForgeryToken, ValidateInput(false)]  
         public ActionResult Send()
         {
-            var mailerMessage = new MailerMessage();
-            TryUpdateModel(mailerMessage);
-            mailerMessage.Subject = string.Format("Adam.Kahtava.com response :: {0}", mailerMessage.Subject);
-            mailerMessage.ToAddress = MyWebPresence.EmailAccount;
-            mailerMessage.ToName = MyWebPresence.FullName;
+            MailerMessage mailerMessage = GetMailerMessage();
 
             if(!mailerMessage.IsValid())
             {
@@ -80,6 +76,16 @@ namespace AdamDotCom.Website.App.Controllers
 
             HttpContext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
             return Content(string.Format("Now that's embarrassing. You found a bug! Let's take this off my site, here's email address {0}. Thanks!", MyWebPresence.EmailLink));
+        }
+
+        private MailerMessage GetMailerMessage()
+        {
+            var mailerMessage = new MailerMessage();
+            TryUpdateModel(mailerMessage);
+            mailerMessage.Subject = string.Format("Adam.Kahtava.com response :: {0}", mailerMessage.Subject);
+            mailerMessage.ToAddress = MyWebPresence.EmailAccount;
+            mailerMessage.ToName = MyWebPresence.FullName;
+            return mailerMessage;
         }
     }
 }   
