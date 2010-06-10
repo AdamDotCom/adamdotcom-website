@@ -81,23 +81,25 @@
   </div>
   <%= Html.AnalyticsTag() %>
   <script type="text/javascript">
-  
+
     $(function() {
       function overlayContact() {
         var cookie = document.cookie;
+        console.debug(cookie);
         var param = 'data:';
         if (cookie.indexOf(param) !== -1) {
-          var data = cookie.substr(cookie.indexOf(param) + param.length, cookie.length)
-        }
+          var paramLocation = cookie.indexOf(param, 0);
+          var data = cookie.substr(paramLocation + param.length, cookie.indexOf('...', paramLocation));
+          }
         if (data) {
           $('.contact-me').attr('href', data);
         }
       }
-        
+      
       if (document.cookie.indexOf('monster', 0) === -1) {
         $.get('/contact/isfriendly', function(data) {
-          document.cookie = 'monster=isfriendly-lookup:true,data:' + data + ';expires;path=/;';
-          overlayContact();
+        document.cookie = 'monster=isfriendly-lookup:true,data:' + data + ';expires;path=/;';
+        overlayContact();
         });
       } else {
         overlayContact();
