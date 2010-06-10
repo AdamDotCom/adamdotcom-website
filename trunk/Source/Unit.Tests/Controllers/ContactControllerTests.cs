@@ -55,7 +55,7 @@ namespace Unit.Tests.Controllers
             var result = controller.IsFriendly() as ContentResult;
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(MyWebPresence.EmailAccount, result.Content);
+            Assert.IsTrue(result.Content.Contains(MyWebPresence.EmailAccount));
 
             mocks.VerifyAll();
         }

@@ -18,11 +18,11 @@
         font-size: 26px;
     }
     #northsidebar .connect li {
-    	background: none;
-    	padding-left: 0px;
+      background: none;
+      padding-left: 0px;
     }
     #northsidebar .connect li a {
-    	text-decoration: none;
+      text-decoration: none;
     }
     #northsidebar .connect li a img {
         vertical-align: bottom;
@@ -43,7 +43,7 @@
           <ul id="menus">
             <li class="current_page_item"><a class="home" title="Home" href="http://adam.kahtava.com/journal/">Journal / Blog</a></li>
             <li><a href="/resume/curriculum-vitae/software-developer/">Resume</a></li>
-            <li><a href="/contact-me/">Contact</a></li>
+            <li><a class="contact-me" href="/contact-me/">Contact</a></li>
             <li><a href="/book-reviews/">Reviews</a></li>
             <li><a href="/reading-lists/recommended-and-wishlist/">Reading Lists</a></li>
             <li><a href="/publicly-available-web-services/">Web Services</a></li>
@@ -81,12 +81,29 @@
   </div>
   <%= Html.AnalyticsTag() %>
   <script type="text/javascript">
+  
     $(function() {
-      if (document.cookie.indexOf('monster',0) === -1) {
-        $.get('/contact/isfriendly');
-        document.cookie = 'monster=isfriendly-lookup:true;expires;path=/;';
+      function overlayContact() {
+        var cookie = document.cookie;
+        var param = 'data:';
+        if (cookie.indexOf(param) !== -1) {
+          var data = cookie.substr(cookie.indexOf(param) + param.length, cookie.length)
+        }
+        if (data) {
+          $('.contact-me').attr('href', data);
+        }
+      }
+        
+      if (document.cookie.indexOf('monster', 0) === -1) {
+        $.get('/contact/isfriendly', function(data) {
+          document.cookie = 'monster=isfriendly-lookup:true,data:' + data + ';expires;path=/;';
+          overlayContact();
+        });
+      } else {
+        overlayContact();
       }
     });
+    
   </script>
 </body>
 </html>

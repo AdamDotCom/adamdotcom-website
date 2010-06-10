@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<Projects>" %>
 <%@ Import Namespace="AdamDotCom.Website.App"%>
 <%@ Import Namespace="AdamDotCom.Common.Website"%>
 <%@ Import Namespace="AdamDotCom.OpenSource.Service.Proxy"%>
@@ -112,7 +112,7 @@
 
 <div id="project-badge">
   <ul>
-    <% var projects = ViewData.Get<Projects>();
+    <% var projects = Model;
        for ( var i = 0; i < projects.Count ; i++ ) { %>
       <li class="<%= ((projects[i].Url.IndexOf("github") != -1) ? "github" : "google-code") %><%= (i % 2 == 1 ? " even" : "") %>">
         <a href="<%= projects[i].Url %>"><%= projects[i].Name %></a>
