@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/App/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Resume>" %>
 <%@ Import Namespace="AdamDotCom.Website.App.Models"%>
 <%@ Import Namespace="AdamDotCom.Resume.Service.Proxy"%>
 <%@ Import Namespace="AdamDotCom.Common.Website" %>
@@ -62,23 +62,23 @@
   <div id="resume">
     <h3>Summary</h3>
     <ul class="summary">
-      <li><%= ViewData.Get<Resume>().Summary %></li>
+      <li><%= Model.Summary %></li>
     </ul>
     <h3>Specialties</h3>
     <ul class="specialties">
-      <li><%= ViewData.Get<Resume>().Specialties %></li>
+      <li><%= Model.Specialties %></li>
     </ul>
     <h3>Experience</h3>
     <ul class="experience">
   <%  int zebra = 0;
-    foreach(Position item in ViewData.Get<Resume>().Positions) {%>
+    foreach(Position item in Model.Positions) {%>
       <li <%= zebra % 2 == 0 ? "" : "class=\"zebra\"" %>><strong class="title"><%= item.Title %></strong> <strong class="company"><%= item.Company %></strong> <span class="period"><%= item.Period %></span> <%= (item.Description) %></li>
   <%  zebra++;
     }%>
     </ul>
     <h3>Education</h3>
     <ul class="education">
-  <%  foreach (Education item in ViewData.Get<Resume>().Educations) {%>
+  <%  foreach (Education item in Model.Educations) {%>
       <li><strong><%= item.Certificate %></strong>, <%= item.Period %>, <%= item.Institute %></li>
   <%  } %>
     </ul>

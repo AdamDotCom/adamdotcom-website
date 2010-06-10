@@ -31,7 +31,7 @@
             <li><a href="http://www.twitter.com/AdamDotCom"><img src="/public/images/connect/twitter_16x16.png">&nbsp;Follow me on Twitter</a></li>
             <li><a href="http://www.linkedin.com/in/kahtava"><img src="/public/images/connect/linkedin_16x16.png">&nbsp;Profile at LinkedIn</a></li>
             <li><a href="http://del.icio.us/kahtava"><img src="/public/images/connect/delicious_16x16.gif">&nbsp;Bookmarks at del.icio.us</a></li>
-            <li><a href="/contact-me/"><img src="/public/images/connect/vcard_16x16.gif">&nbsp;Contact me</a></li>
+            <li><a class="contact-me" href="/contact-me/"><img src="/public/images/connect/vcard_16x16.gif">&nbsp;Contact me</a></li>
         </ul>
     </div>
   </div>

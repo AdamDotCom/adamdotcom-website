@@ -37,7 +37,7 @@ namespace AdamDotCom.Website.App.Controllers
 
                 if (whois.IsFriendly || whois.IsFilterMatch)
                 {
-                    return Content(MyWebPresence.EmailAccount);
+                    return Content(string.Format("mailto:{0}?subject=I found your site and...", MyWebPresence.EmailAccount));
                 }
             }
 

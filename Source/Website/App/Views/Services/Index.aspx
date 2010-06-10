@@ -53,8 +53,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
   <h2>Publicly available web services hosted on http://adam.kahtava.com/services/</h2>
   <p>
-    The source for all services can be found at <a href="http://code.google.com/p/adamdotcom-services/">http://code.google.com/p/adamdotcom-services/</a>.
-    Additional information can be found on my blog under the <a href="http://adam.kahtava.com/journal/category/open-source/adc-services/">AdamDotCom Services</a> category. 
+    The source for these services can be found at <a href="http://code.google.com/p/adamdotcom-services/">http://code.google.com/p/adamdotcom-services/</a>.
+    Additional service information can be found on my blog under the <a href="http://adam.kahtava.com/journal/category/open-source/adc-services/">services category</a>. 
   </p>
   <p>
     Active services include:
@@ -160,7 +160,7 @@
       <ul>
         <li>Normal Whois retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/whois.{json|xml}[?query={ip-address}][&amp;callback={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/whois.{json|xml|csv}[?query={ip-address}][&amp;callback={callback}]</span></li>
           </ul>
           Examples:
           <ul>
@@ -171,18 +171,19 @@
         </li>
         <li>Enhanced Whois retrieval URI: 
           <ul>
-            <li><span class="uri">http://adam.kahtava.com/services/whois/enhanced.{json|xml}?query={ip-address}&amp;filters={filter1,filter2,...}&amp;referrer={referrer}[&amp;callback={callback}]</span></li>
+            <li><span class="uri">http://adam.kahtava.com/services/whois/enhanced.{json|xml|csv}?query={ip-address}&amp;filters={filter1,filter2,...}&amp;referrer={referrer}[&amp;callback={callback}]</span></li>
           </ul>
           Example:
           <ul>
             <li><a href="http://adam.kahtava.com/services/whois/enhanced.xml?query=74.125.127.99&filters=Calgary&referrer=Twitter">http://adam.kahtava.com/services/whois/enhanced.xml?query=74.125.127.99&amp;filters=Calgary&amp;referrer=Twitter</a></li>
+            <li><a href="http://adam.kahtava.com/services/whois/enhanced.csv?query=74.125.127.99&referrer=LinkedIn">http://adam.kahtava.com/services/whois/enhanced.csv?query=74.125.127.99&amp;referrer=LinkedIn</a></li>
           </ul>              
         </li>
       </ul>	
     </li>
   </ul>
   <p>
-    Contributions, code reviews, and thoughts are welcomed. Feel free to <a href="http://adam.kahtava.com/contact-me/">contact me</a>. Thanks for stopping by!
+    Contributions, code reviews, and thoughts are welcomed. Feel free to <a class="contact-me" href="/contact-me/">contact me</a>. Thanks for stopping by!
   </p>
 </asp:Content>
 
