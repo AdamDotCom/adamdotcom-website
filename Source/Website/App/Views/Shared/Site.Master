@@ -85,12 +85,11 @@
     $(function() {
       function overlayContact() {
         var cookie = document.cookie;
-        console.debug(cookie);
         var param = 'data:';
         if (cookie.indexOf(param) !== -1) {
           var paramLocation = cookie.indexOf(param, 0);
           var data = cookie.substr(paramLocation + param.length, cookie.indexOf('...', paramLocation));
-          }
+        }
         if (data) {
           $('.contact-me').attr('href', data);
         }
