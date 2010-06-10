@@ -97,8 +97,8 @@
       
       if (document.cookie.indexOf('monster', 0) === -1) {
         $.get('/contact/isfriendly', function(data) {
-        document.cookie = 'monster=isfriendly-lookup:true,data:' + data + ';expires;path=/;';
-        overlayContact();
+          document.cookie = 'monster=isfriendly-lookup:true,data:' + data + ';expires;path=/;';
+          overlayContact();
         });
       } else {
         overlayContact();
